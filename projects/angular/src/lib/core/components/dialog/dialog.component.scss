@@ -1,0 +1,41 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--viewport-height);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1000;
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: var(--viewport-height);
+    width: 100vw;
+    backdrop-filter: blur(2px);
+    pointer-events: all;
+    background: #09090b08;
+    z-index: 1001;
+
+    &.click-outside {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  section {
+    background: var(--background);
+    border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    box-shadow: 0 10px 15px 5px rgba(1, 1, 1, 0.01);
+    padding: 16px;
+    border-radius: calc(var(--roundness) + 2px);
+    pointer-events: all;
+    position: relative;
+    z-index: 1002;
+  }
+}

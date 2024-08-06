@@ -1,0 +1,10 @@
+<section (click)="toggleSwitch()">
+  <div class="switch-container">
+    <div [ngClass]="value() ? 'true' : 'false'" class="switch"></div>
+  </div>
+  @if (label()) {
+    <div class="label">
+      {{ label() }}
+    </div>
+  }
+</section>

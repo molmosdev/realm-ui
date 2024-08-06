@@ -1,0 +1,51 @@
+:host {
+  .outside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+  }
+
+  section {
+    position: absolute;
+    z-index: 1001;
+    background: white;
+    border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    box-shadow: 0 10px 15px 5px rgba(1, 1, 1, 0.01);
+    border-radius: var(--roundness);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    box-sizing: border-box;
+    width: 100%;
+
+    .no-options {
+      padding: 14px;
+      box-sizing: border-box;
+      text-align: center;
+      width: 100%;
+    }
+
+    .option {
+      padding: 10px 15px;
+      min-height: 35.45px;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:hover:not(.using-keyboard) {
+        cursor: pointer;
+        background-color: color-mix(in srgb, var(--primary-foreground) 10%, var(--primary));
+      }
+
+      &.selected {
+        background-color: color-mix(in srgb, var(--primary-foreground) 4%, var(--primary));
+      }
+
+      &.hover {
+        background-color: color-mix(in srgb, var(--primary-foreground) 10%, var(--primary));
+      }
+    }
+  }
+}

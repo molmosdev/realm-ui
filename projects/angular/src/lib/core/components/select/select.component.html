@@ -1,0 +1,37 @@
+<div #trigger
+     (click)="toggleOptions()"
+     (focusin)="isFocused.set(true)"
+     (focusout)="isFocused.set(false)" [@incorrectBackgroundTrigger]="incorrect()"
+     [ngClass]="{'has-label': label(), 'has-value': selectedId()}"
+     class="selected-option" tabindex="0">
+  @if (label()) {
+    <div class="label" [ngClass]="{'has-value': selectedId()}">
+      {{ label() }}
+    </div>
+  }
+  @if (selectedId() && selectedValue()) {
+    {{ selectedValue() }}
+  }
+  <div [@incorrectBackgroundGradientTrigger]="incorrect()" class="arrows">
+    @if (showOptions()) {
+      <ng-content select="[r-arrow-up]"/>
+    } @else {
+      <ng-content select="[r-arrow-down]"/>
+    }
+  </div>
+</div>
+@defer (when showOptions()) {
+  @if (showOptions()) {
+    <r-select-options @optionsTrigger
+                      [trigger]="triggerElementRef()!"
+                      [(selectedId)]="selectedId"
+                      [(selectedValue)]="selectedValue"
+                      [(show)]="showOptions"
+                      [options]="options()"
+                      [positioning]="positioning()"
+                      [(usingKeyboard)]="optionsUsingKeyboard"
+                      [noOptionsText]="noOptionsText()">
+      <ng-content></ng-content>
+    </r-select-options>
+  }
+}

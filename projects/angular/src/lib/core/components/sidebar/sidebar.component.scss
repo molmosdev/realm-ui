@@ -1,0 +1,110 @@
+:host {
+  .sidebar-container {
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: var(--viewport-height);
+      z-index: 999;
+      width: 64px;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      box-sizing: border-box;
+      border-right: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+      gap: 12px;
+      background: var(--app-background);
+
+      .logo-pin-container {
+        height: 39px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo:hover, .pin:hover {
+          cursor: pointer;
+        }
+      }
+
+      .close-icon {
+        margin-left: auto;
+      }
+
+      .items-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+
+        .top {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 2px;
+        }
+
+        .bottom {
+          width: 100%;
+
+          .open-mobile {
+            height: 39px;
+            width: 39px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            border-radius: var(--roundness);
+
+            &:hover {
+              background-color: color-mix(in srgb, var(--primary-foreground) 7%, var(--primary));
+              transition: 0.5s;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .logo-ham-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 32px;
+        gap: 12px;
+      }
+    }
+
+    .outside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--viewport-height);
+      z-index: 999;
+      opacity: 1;
+      backdrop-filter: blur(2px);
+    }
+  }
+
+  .outside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--viewport-height);
+    z-index: 998;
+  }
+}

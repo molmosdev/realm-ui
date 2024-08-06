@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+  box-sizing: border-box;
+  border-radius: var(--roundness);
+  overflow-x: auto;
+  scrollbar-width: thin;
+
+  .header-row {
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+  }
+
+  .rows {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+
+    &.no-rows {
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .no-rows {
+      position: absolute;
+      left: 50%;
+      top: 73%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

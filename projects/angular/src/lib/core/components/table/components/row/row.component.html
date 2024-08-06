@@ -1,0 +1,8 @@
+<section [ngClass]="{'header': header()}" [ngStyle]="rowStyle">
+  <ng-content/>
+  @if (dropdown()) {
+    <div class="dropdown">
+      <ng-content select="[r-row-dropdown]"/>
+    </div>
+  }
+</section>

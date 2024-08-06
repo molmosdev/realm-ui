@@ -1,0 +1,19 @@
+:host {
+  #dropdown {
+    position: fixed;
+    padding: 8px;
+    box-sizing: border-box;
+    background: var(--background);
+    border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    box-shadow: 0 10px 15px 5px rgba(1, 1, 1, 0.01);
+    border-radius: calc(var(--roundness) + 2px);
+    z-index: 1002;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 600px) {
+      max-width: 80vw;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+:host {
+  section {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    height: 35px;
+    border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    width: 100%;
+    position: relative;
+
+    &:not(.header) {
+      background: var(--primary);
+    }
+
+    .dropdown {
+      position: relative;
+      height: 33px;
+      min-width: 33px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      transition: 0.2s background;
+      right: 5px;
+      top: 1px;
+
+      &:hover {
+        cursor: pointer;
+        background: color-mix(in srgb, var(--primary-foreground) 5%, var(--primary));
+        transition: 0.2s;
+      }
+    }
+  }
+
+  &:last-child {
+    section {
+      border-bottom: none;
+    }
+  }
+}

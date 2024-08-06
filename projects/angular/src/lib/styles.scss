@@ -1,0 +1,21 @@
+@import './styles/fonts';
+
+/* General style */
+
+:host {
+  /* Viewport height */
+
+  @media (max-width: 1182px) {
+    --viewport-height: calc(var(--vh, 1vh) * 100);
+    @supports (height: 1dvh) {
+      --viewport-height: 100dvh;
+    }
+  }
+
+  @media (min-width: 1183px) {
+    --viewport-height: 100vh;
+    @supports (height: 1dvh) {
+      --viewport-height: 100dvh;
+    }
+  }
+}

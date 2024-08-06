@@ -1,0 +1,23 @@
+:host {
+  section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &.left {
+      justify-content: flex-start;
+    }
+
+    &.right {
+      justify-content: flex-end;
+    }
+
+    &.spread {
+      justify-content: center;
+
+      r-button {
+        flex: 1;
+      }
+    }
+  }
+}

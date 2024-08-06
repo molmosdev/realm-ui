@@ -1,0 +1,10 @@
+@if (isDropdownContentVisible()) {
+  <section #dropdown id="dropdown" @fadeInOutAnimation (click)="closeEmitter.emit()"
+           [ngStyle]="{'width': width() + 'px'}">
+    @if (lazyContent()) {
+      <ng-container [ngTemplateOutlet]="lazyContent()?.tpl!"></ng-container>
+    } @else {
+      <ng-content/>
+    }
+  </section>
+}

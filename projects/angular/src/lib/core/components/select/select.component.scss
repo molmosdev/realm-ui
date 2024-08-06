@@ -1,0 +1,48 @@
+:host {
+  position: relative;
+  color: var(--primary-foreground);
+
+  .selected-option {
+    min-height: 34px;
+    box-sizing: border-box;
+    border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    border-radius: var(--roundness);
+    background: white;
+    cursor: pointer;
+    user-select: none;
+    background: var(--background);
+    padding: 8px 10px;
+    position: relative;
+
+    .arrows {
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 var(--roundness) var(--roundness) 0;
+    }
+
+    .label {
+      position: absolute;
+      transform: translateY(-50%);
+      background: transparent;
+      top: 50%;
+
+      &.has-value {
+        top: 8px;
+        font-size: 70%;
+      }
+    }
+
+    &.has-label {
+      &.has-value {
+        padding: 13px 10px 3px;
+      }
+    }
+  }
+}

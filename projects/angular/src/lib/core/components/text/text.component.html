@@ -1,0 +1,9 @@
+@if (label()) {
+  <div class="label" [ngClass]="{'has-value': value(), 'has-value-forced': hasValueForced()}">
+    {{ label() }}
+  </div>
+}
+<input (keyup)="updateValue(inputValue)" [(ngModel)]="inputValue"
+       [@incorrectBackgroundTrigger]="incorrect()"
+       [ngClass]="{'has-label': label(), 'has-value': value(), 'has-value-forced': hasValueForced() }"
+       [type]="type()" class="f-400">

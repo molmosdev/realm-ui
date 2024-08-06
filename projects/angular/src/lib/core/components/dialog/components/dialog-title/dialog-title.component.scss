@@ -1,0 +1,10 @@
+:host {
+  color: var(--foreground);
+
+  section {
+    &.center {
+      padding-left: 5px;
+      box-sizing: border-box;
+    }
+  }
+}
