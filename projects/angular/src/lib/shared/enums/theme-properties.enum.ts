@@ -1,4 +1,5 @@
 export enum ThemePropertiesEnum {
+  AppBackground = '--app-background',
   Background = '--background',
   Foreground = '--foreground',
   Primary = '--primary',
