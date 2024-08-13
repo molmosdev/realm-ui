@@ -2,23 +2,28 @@
   .sidebar-container {
     .sidebar {
       position: fixed;
-      top: 0;
-      left: 0;
-      height: var(--viewport-height);
-      z-index: 999;
+      top: 10px;
+      left: 10px;
+      height: calc(100dvh - 20px);
+      z-index: 1000;
       width: 64px;
       display: flex;
       flex-direction: column;
       padding: 12px;
       box-sizing: border-box;
-      border-right: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+      border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
       gap: 12px;
-      background: var(--app-background);
+      background: var(--background);
+      border-radius: var(--roundness);
 
       .logo-pin-container {
         height: 39px;
         display: flex;
         justify-content: space-between;
+
+        .logo {
+          display: flex;
+        }
 
         .logo:hover, .pin:hover {
           cursor: pointer;

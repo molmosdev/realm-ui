@@ -1,7 +1,9 @@
 <div [@sidebarPaddingAnimation]="pinState()" class="sidebar-container">
   <div (mouseenter)="pinState() === PinState.UNPINNED && !isMobileOrTablet && setSidenavState(SidenavState.OPEN)"
        (mouseleave)="pinState() === PinState.UNPINNED && setSidenavState(SidenavState.CLOSED)"
-       [@sidebarAnimation]="sidebarState() + '-' + pinState()" class="sidebar">
+       [@fadeInOutHorizontalTrigger]="fadeInOutHorizontalTriggerData"
+       [@sidebarAnimation]="sidebarState() + '-' + pinState()"
+       class="sidebar">
     <div class="logo-pin-container">
       <div class="logo">
         <ng-content select="[r-sidebar-logo]"/>
