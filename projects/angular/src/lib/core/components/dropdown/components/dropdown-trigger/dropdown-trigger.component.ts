@@ -1,4 +1,4 @@
-import { Component, ElementRef, output } from '@angular/core';
+import { Component, ElementRef, input, output } from '@angular/core';
 
 @Component({
   selector: 'r-dropdown-trigger',
@@ -8,10 +8,8 @@ import { Component, ElementRef, output } from '@angular/core';
   styleUrl: './dropdown-trigger.component.scss'
 })
 export class DropdownTrigger {
-  /* Emitters */
+  disabled = input<boolean>(false);
   triggerEmitter = output<void>();
-
-  /* Variables */
   el = this.elementRef.nativeElement;
 
   constructor(

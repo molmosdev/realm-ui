@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, input, InputSignal } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
 @Component({
@@ -11,29 +11,13 @@ import { NgStyle } from '@angular/common';
   styleUrl: './row-item.component.scss'
 })
 export class RowItem {
-  width: InputSignal<number | undefined> = input<number>();
-  alignedLeft: InputSignal<boolean> = input<boolean>(false);
-
-  constructor(
-    private el: ElementRef
-  ) {
-    effect(() => {
-      this.setRowItemStyles();
-    })
-  }
-
-  /**
-   * Set the styles of the row item
-   */
-  setRowItemStyles(): void {
-    if (this.width() !== undefined) {
-      this.el.nativeElement.style.width = `${this.width()}px`;
-      this.el.nativeElement.style.flex = 'none';
-    } else {
-      this.el.nativeElement.style.flex = '1'
-    }
-    if (this.alignedLeft()) {
-      this.el.nativeElement.style.justifyContent = 'flex-start';
-    }
-  }
+  widthPx = input<number>();
+  alignedLeft = input<boolean>(false);
+  isHeader = input<boolean>(false);
+  style = computed(() => {
+    return {
+      width: `${this.widthPx()}px`,
+      justifyContent: this.alignedLeft() ? 'flex-start' : 'center'
+    };
+  });
 }

@@ -1,9 +1,4 @@
-<div [ngStyle]="{'width.px': this.rowWidth()}" class="header-row">
-  <ng-content select="[r-row-header]"/>
-</div>
-<div [ngClass]="{'no-rows': noRows()}" [ngStyle]="{'width.px': this.rowWidth()}" class="rows">
+<ng-content select="[r-row-header]"/>
+<div class="scroll-section">
   <ng-content/>
-  @if (noRows()) {
-    <div class="no-rows">{{ noRowsText() }}</div>
-  }
 </div>

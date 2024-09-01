@@ -24,6 +24,7 @@ export class DropdownContent {
   isDropdownContentVisible = signal<boolean>(false);
   lazyContent = contentChild(LazyContentDirective);
   dropdown = viewChild<ElementRef>('dropdown');
+  forcePopover = input<boolean>(false);
 
   /* Emitters */
   closeEmitter = output<void>();
@@ -57,7 +58,7 @@ export class DropdownContent {
   setDropdownPositioning(): void {
     let dropdownNativeElement = this.dropdown()?.nativeElement;
     if (this.triggerRect && dropdownNativeElement) {
-      if (window.innerWidth <= 600) {
+      if (window.innerWidth <= 600 || this.forcePopover()) {
         dropdownNativeElement.style.top = '50%';
         dropdownNativeElement.style.left = '50%';
         dropdownNativeElement.style.transform = 'translate(-50%, -50%)';

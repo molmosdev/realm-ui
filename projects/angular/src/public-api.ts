@@ -32,7 +32,6 @@ export * from './lib/core/components/dropdown/enums/dropdown-positioning.enum';
 export * from './lib/core/components/sidebar/sidebar.component';
 export * from './lib/core/components/sidebar/components/sidebar-item/sidebar-item.component';
 export * from './lib/core/components/sidebar/components/sidebar-group/sidebar-group.component';
-export * from './lib/core/components/sidebar/enums/pin-state.enum';
 
 /* Services */
 export * from './lib/core/services/theme-config.service';

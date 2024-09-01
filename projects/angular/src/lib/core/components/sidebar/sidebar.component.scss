@@ -1,115 +1,90 @@
 :host {
+  height: 100%;
+
   .sidebar-container {
-    .sidebar {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      height: calc(100dvh - 20px);
-      z-index: 1000;
-      width: 64px;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1000;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--app-background);
+
+    &.open-pinned, &.open-unpinned {
+      width: 245px;
+    }
+
+    .toggle {
       display: flex;
-      flex-direction: column;
-      padding: 12px;
-      box-sizing: border-box;
-      border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
-      gap: 12px;
-      background: var(--background);
+      padding: 10px;
+      gap: 7px;
       border-radius: var(--roundness);
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      transition: background-color 0.5s;
+      color: var(--foreground);
 
-      .logo-pin-container {
-        height: 39px;
-        display: flex;
-        justify-content: space-between;
-
-        .logo {
-          display: flex;
-        }
-
-        .logo:hover, .pin:hover {
-          cursor: pointer;
-        }
-      }
-
-      .close-icon {
-        margin-left: auto;
-      }
-
-      .items-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        height: 100%;
-
-        .top {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: flex-start;
-          gap: 2px;
-        }
-
-        .bottom {
-          width: 100%;
-
-          .open-mobile {
-            height: 39px;
-            width: 39px;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            border-radius: var(--roundness);
-
-            &:hover {
-              background-color: color-mix(in srgb, var(--primary-foreground) 7%, var(--primary));
-              transition: 0.5s;
-              cursor: pointer;
-            }
-          }
-        }
+      &:hover {
+        background-color: color-mix(in srgb, var(--primary-foreground) 7%, var(--primary));
+        transition: 0.5s;
+        cursor: pointer;
       }
     }
 
-    .mobile-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
-      width: 100%;
-      box-sizing: border-box;
-      padding: 12px;
+    .sidebar-header {
+      height: 39px;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      .logo-ham-container {
+      .logo {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 32px;
-        gap: 12px;
+      }
+
+      .logo:hover, .pin:hover {
+        cursor: pointer;
       }
     }
 
-    .outside {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: var(--viewport-height);
-      z-index: 999;
-      opacity: 1;
-      backdrop-filter: blur(2px);
+    .close-icon {
+      margin-left: auto;
     }
-  }
 
-  .outside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--viewport-height);
-    z-index: 998;
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex: 1;
+
+      .items-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+        width: 100%;
+      }
+
+      .bottom {
+        width: 100%;
+
+        .open-mobile {
+          height: 39px;
+          width: 39px;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          border-radius: var(--roundness);
+
+          &:hover {
+            background-color: color-mix(in srgb, var(--primary-foreground) 7%, var(--primary));
+            transition: 0.5s;
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,10 @@
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
+  .row-item-container {
+    border-right: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: 10px;
+  }
 }

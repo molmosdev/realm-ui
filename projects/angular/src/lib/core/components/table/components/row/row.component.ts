@@ -1,33 +1,34 @@
-import { Component, contentChildren, input, InputSignal, Signal, } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
-import { RowItem } from './components/row-item/row-item.component';
+import { Component, contentChild, effect, ElementRef, input } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Dropdown } from '../../../dropdown/dropdown.component';
 
 @Component({
   selector: 'r-row',
   standalone: true,
   imports: [
-    NgStyle,
     NgClass
   ],
   templateUrl: './row.component.html',
   styleUrl: './row.component.scss'
 })
 export class Row {
-  header: InputSignal<boolean> = input<boolean>(false);
-  gap: InputSignal<number> = input<number>(15);
-  dropdown: InputSignal<boolean> = input<boolean>(false);
-  rowElements: Signal<readonly RowItem[]> = contentChildren(RowItem);
+  header = input<boolean>(false);
+  dropdown = contentChild(Dropdown);
+
+  constructor(
+    private el: ElementRef
+  ) {
+    effect(() => {
+      this.setRowStyles();
+    })
+  }
 
   /**
-   * Get the row style
-   *
-   * @returns {object} - The row style
+   * Set row styles
    */
-  get rowStyle(): object {
-    return {
-      'gap.px': this.gap(),
-      'padding-left.px': this.gap(),
-      'padding-right.px': this.gap() + 30
+  setRowStyles(): void {
+    if (this.header()) {
+      this.el.nativeElement.classList.add('header');
     }
   }
 }

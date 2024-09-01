@@ -1,31 +1,20 @@
 :host {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
-  box-sizing: border-box;
-  border-radius: var(--roundness);
+  align-items: flex-start;
   overflow-x: auto;
   scrollbar-width: thin;
+  border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+  background: color-mix(in srgb, var(--primary-foreground) 2%, var(--primary));
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: var(--roundness);
 
-  .header-row {
-    border-bottom: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
-  }
-
-  .rows {
+  .scroll-section {
     overflow-y: auto;
-    overflow-x: hidden;
     scrollbar-width: thin;
-
-    &.no-rows {
-      padding: 30px;
-      box-sizing: border-box;
-    }
-
-    .no-rows {
-      position: absolute;
-      left: 50%;
-      top: 73%;
-      transform: translate(-50%, -50%);
-    }
+    padding-right: 36px;
   }
 }

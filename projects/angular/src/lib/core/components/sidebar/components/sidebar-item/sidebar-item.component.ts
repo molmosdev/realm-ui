@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { SidebarState } from '../../enums/sidenav-state.enum';
 import { fadeInOutAnimation } from '../../../../../shared/animations/animations';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'r-sidebar-item',
   standalone: true,
   imports: [
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NgClass
   ],
   templateUrl: './sidebar-item.component.html',
   styleUrl: './sidebar-item.component.scss',
@@ -16,9 +16,5 @@ import { NgTemplateOutlet } from '@angular/common';
   ]
 })
 export class SidebarItem {
-  /* Signals */
-  state = signal<SidebarState>(SidebarState.CLOSED);
-
-  /* Enums */
-  SidenavState = SidebarState;
+  isOpen = signal<boolean>(true);
 }

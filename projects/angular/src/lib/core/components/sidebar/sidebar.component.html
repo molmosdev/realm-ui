@@ -1,38 +1,25 @@
-<div [@sidebarPaddingAnimation]="pinState()" class="sidebar-container">
-  <div (mouseenter)="pinState() === PinState.UNPINNED && !isMobileOrTablet && setSidenavState(SidenavState.OPEN)"
-       (mouseleave)="pinState() === PinState.UNPINNED && setSidenavState(SidenavState.CLOSED)"
-       [@fadeInOutHorizontalTrigger]="fadeInOutHorizontalTriggerData"
-       [@sidebarAnimation]="sidebarState() + '-' + pinState()"
-       class="sidebar">
-    <div class="logo-pin-container">
-      <div class="logo">
-        <ng-content select="[r-sidebar-logo]"/>
-      </div>
-      @if (sidebarState() === SidenavState.OPEN && !isMobileOrTablet) {
-        <div class="pin" (click)="togglePin()" @fadeInOutAnimation>
-          @if (pinState() === PinState.PINNED) {
-            <ng-content select="[r-sidebar-pin-off]"/>
-          } @else {
-            <ng-content select="[r-sidebar-pin-on]"/>
-          }
-        </div>
-      }
+<div [@fadeInOutHorizontalTrigger]="fadeInOutHorizontalTriggerData"
+     [@sidebarAnimation]="isOpen() ? 'open' : 'closed'"
+     class="sidebar-container">
+  <div class="sidebar-header">
+    <div class="logo">
+      <ng-content select="[r-sidebar-logo]"/>
     </div>
+    @if (isOpen()) {
+      <div class="toggle" (click)="setSidenavState(false)" @fadeInOutAnimation>
+        <ng-content select="[r-sidebar-close-toggle]"/>
+      </div>
+    }
+  </div>
+  <div class="content">
     <div class="items-container">
-      <div (click)="isMobileOrTablet && setSidenavState(SidenavState.CLOSED)" class="top">
-        <ng-content select="[r-sidebar-top]"/>
-      </div>
-      <div class="bottom">
-        @if (isMobileOrTablet && sidebarState() === SidenavState.CLOSED) {
-          <div class="open-mobile" (click)="isMobileOrTablet && setSidenavState(SidenavState.OPEN)" @fadeInOutAnimation>
-            <ng-content select="[r-sidebar-open-mobile-icon]"/>
-          </div>
-        }
-        <ng-content select="[r-sidebar-bottom]"/>
-      </div>
+      <ng-content select="[r-sidebar-items]"/>
     </div>
+    @if (!isOpen()) {
+      <div class="toggle" (click)="setSidenavState(true)" @fadeInOutAnimation>
+        <ng-content select="[r-sidebar-open-toggle]"/>
+      </div>
+    }
+    <ng-content/>
   </div>
 </div>
-@if (isMobileOrTablet && sidebarState() === SidenavState.OPEN) {
-  <div class="outside" (click)="setSidenavState(SidenavState.CLOSED)" @fadeInOutAnimation></div>
-}

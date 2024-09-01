@@ -1,5 +1,5 @@
 <ng-content select="[r-sidebar-item-icon]"/>
-@if (state() === SidenavState.OPEN) {
+@if (isOpen()) {
   <div class="item" @fadeInOutAnimation>
     <ng-content select="[r-sidebar-item-text]"/>
   </div>
