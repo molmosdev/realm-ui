@@ -1,8 +1,0 @@
-<div (click)="show.set(false)" @fadeInOutAnimation class="outside"></div>
-<section #optionsContainer (click)="show.set(false)" [@fadeInOutVerticalTrigger]="positioningParams"
-         [ngStyle]="{'max-height': height() + 'px', 'width': width() + 'px' || '100%'}">
-  <ng-content/>
-  @if (noOptions()) {
-    <div class="no-options">{{ noOptionsText() }}</div>
-  }
-</section>

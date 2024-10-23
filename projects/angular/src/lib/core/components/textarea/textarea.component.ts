@@ -1,24 +1,21 @@
-import { Component, effect, input, model, output } from '@angular/core';
+import { Component, effect, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'r-text',
+  selector: 'r-textarea',
   standalone: true,
   imports: [FormsModule, NgClass],
-  templateUrl: './text.component.html',
+  templateUrl: './textarea.component.html',
   animations: [],
 })
-export class Text {
-  value = model<string | null>(null);
-  label = input<string | undefined>(undefined);
-  error = input<boolean>(false);
-  type = input<string>('text');
-  hasValueForced = input<boolean>(false);
-  onChange = output<string | null>();
-  clearable = input<boolean>(false);
+export class Textarea {
+  value: ModelSignal<string | null> = model<string | null>(null);
+  label: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  error: InputSignal<boolean> = input<boolean>(false);
+  hasValueForced: InputSignal<boolean> = input<boolean>(false);
+  onChange: OutputEmitterRef<string | null> = output<string | null>();
   inputValue: string = '';
-  blocked = input<boolean>(false);
 
   constructor() {
     effect(() => {
@@ -43,9 +40,5 @@ export class Text {
   updateValue(newValue: string): void {
     this.value.set(newValue === '' ? null : newValue);
     this.onChange.emit(this.value());
-  }
-
-  clear() {
-    this.updateValue('');
   }
 }

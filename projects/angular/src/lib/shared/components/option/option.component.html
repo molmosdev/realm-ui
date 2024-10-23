@@ -1,0 +1,14 @@
+<li
+  role="option"
+  [ngClass]="{ disabled: disabled(), selected: selected, highlighted: highlighted }"
+  (click)="onSelect()"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()">
+  @if (prefix()) {
+    {{ prefix() }}
+  }
+  <ng-content></ng-content>
+  @if (suffix()) {
+    {{ suffix() }}
+  }
+</li>

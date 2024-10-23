@@ -35,7 +35,8 @@
             "tsConfig": "projects/angular/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ]
           }
         }

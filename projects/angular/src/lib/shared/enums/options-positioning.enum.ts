@@ -1,4 +1,4 @@
 export enum OptionsPositioningEnum {
-  Up = 'Up',
-  Down = 'Down'
+  Up = 'up',
+  Down = 'down',
 }
