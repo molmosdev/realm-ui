@@ -10,7 +10,6 @@ import { fadeInOutTrigger } from '../../../shared/animations/animations';
   standalone: true,
   imports: [NgClass, Spinner, NgStyle],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss',
   animations: [fadeInOutTrigger],
 })
 export class Button {
