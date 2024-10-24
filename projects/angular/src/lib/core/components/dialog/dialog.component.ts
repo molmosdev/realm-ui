@@ -8,7 +8,6 @@ import { LazyContentDirective } from '../../../shared/directives/lazy-content.di
   standalone: true,
   imports: [NgTemplateOutlet, NgClass],
   templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.scss',
   animations: [fadeInOutZoomTrigger, fadeInOutTrigger],
 })
 export class Dialog {

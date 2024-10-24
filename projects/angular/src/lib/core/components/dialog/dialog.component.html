@@ -1,10 +1,10 @@
 @if (show()) {
   <span @fadeInOutTrigger class="background" (click)="close()" [ngClass]="{ 'click-outside': clickOutside() }"></span>
-  <section @fadeInOutZoomTrigger>
+  <div class="dialog" @fadeInOutZoomTrigger>
     @if (lazyContent()) {
       <ng-container [ngTemplateOutlet]="lazyContent()?.tpl!"></ng-container>
     } @else {
       <ng-content />
     }
-  </section>
+  </div>
 }
