@@ -1,5 +1,4 @@
 <div
-  #optionsTrigger
   [ngClass]="{ 'has-label': label(), 'has-value': selectedContent(), error: error() }"
   class="select-box"
   (click)="isOpen.set(!isOpen())"
@@ -66,9 +65,13 @@
   </div>
 </div>
 @if (isOpen()) {
-  <div class="dropdown-wrapper" @fadeInOutTrigger>
+  <div class="dropdown-wrapper" @fadeInOutTrigger [ngClass]="positioning()">
     <ul class="dropdown" role="listbox" #optionsWrapper [ngStyle]="{ 'max-height.px': optionsMaxHeight() }">
-      <ng-content></ng-content>
+      @if (options() && options().length > 0) {
+        <ng-content></ng-content>
+      } @else {
+        <div class="no-options">No hay resultados</div>
+      }
     </ul>
   </div>
 }

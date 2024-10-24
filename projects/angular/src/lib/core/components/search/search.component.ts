@@ -1,33 +1,32 @@
 import {
   Component,
-  HostListener,
-  signal,
-  effect,
   contentChildren,
-  viewChild,
-  model,
+  effect,
   ElementRef,
+  HostListener,
   input,
+  model,
   output,
+  signal,
+  viewChild,
 } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
 import { Option } from '../../../shared/components/option/option.component';
 import { OptionsPositioningEnum } from '../../../shared/enums/options-positioning.enum';
+import { NgClass, NgStyle } from '@angular/common';
+import { Text } from '../text/text.component';
+import { UtilsService } from '../../../shared/services/utils.service';
 import { fadeInOutTrigger } from '../../../shared/animations/animations';
 
 @Component({
-  selector: 'r-select',
+  selector: 'r-search',
   standalone: true,
-  imports: [NgStyle, NgClass],
-  templateUrl: './select.component.html',
+  imports: [NgClass, NgStyle, Text],
+  templateUrl: './search.component.html',
   animations: [fadeInOutTrigger],
 })
-export class Select {
+export class Search {
   /** Signal for the label of the select */
   label = input<string | undefined>(undefined);
-
-  /** Signal for show the clear button */
-  clearable = input<boolean>(false);
 
   /** Signal for the error state of the select */
   error = input<boolean>(false);
@@ -65,7 +64,16 @@ export class Select {
   /* Signal for the positioning of the options */
   positioning = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
 
-  constructor(private elementRef: ElementRef) {
+  /** Output event for text changes */
+  onTextChanges = output<string | null>();
+
+  /** Input for set the dobounce delay */
+  debounceDelay = input<number>(400);
+
+  constructor(
+    private elementRef: ElementRef,
+    private utilsService: UtilsService
+  ) {
     effect(
       () => {
         if (this.optionsWrapper()) {
@@ -109,6 +117,7 @@ export class Select {
   }
 
   selectOption(option: Option, index: number): void {
+    this.utilsService.stopDebounce();
     this.selectedValue.set(option.value());
     this.lastSelectedValue = option.value();
     this.selectedContent.set(option.el.nativeElement.innerText.trim());
@@ -207,5 +216,20 @@ export class Select {
     this.isOpen.set(false);
     this.handleOptionsStates();
     $event.stopPropagation();
+  }
+
+  handleTextChanges(textContent: string | null): void {
+    console.log('textContent', textContent);
+    if (textContent) {
+      this.utilsService.debounce(() => {
+        this.onTextChanges.emit(textContent);
+        console.log('debounced');
+        this.isOpen.set(true);
+      }, this.debounceDelay());
+    } else {
+      this.utilsService.stopDebounce();
+      this.onTextChanges.emit(null);
+      this.isOpen.set(false);
+    }
   }
 }

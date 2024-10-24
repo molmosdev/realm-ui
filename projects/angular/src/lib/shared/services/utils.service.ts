@@ -18,4 +18,11 @@ export class UtilsService {
     clearTimeout(this.debounceTimer);
     this.debounceTimer = setTimeout(func, delay);
   }
+
+  /**
+   * Stop debounce
+   */
+  stopDebounce(): void {
+    clearTimeout(this.debounceTimer);
+  }
 }

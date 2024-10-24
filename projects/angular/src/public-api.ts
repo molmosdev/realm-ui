@@ -58,6 +58,9 @@ export * from './lib/core/components/textarea/textarea.component';
 /* Select */
 export * from './lib/core/components/select/select.component';
 
+/* Search */
+export * from './lib/core/components/search/search.component';
+
 /* Option */
 export * from './lib/shared/components/option/option.component';
 
