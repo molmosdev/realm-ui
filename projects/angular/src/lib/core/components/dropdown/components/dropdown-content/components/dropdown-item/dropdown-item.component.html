@@ -1,6 +1,6 @@
-<button [ngClass]="{'selected': selected(), 'disabled': disabled()}" class="f-400" id="dropdown-item" tabindex="0">
-  <ng-content/>
+<button [ngClass]="{ selected: selected(), disabled: disabled() }" class="f-400" id="dropdown-item" tabindex="0">
+  <ng-content />
   <div class="icon">
-    <ng-content select="[r-check-icon]"/>
+    <ng-content select="[r-check-icon]" />
   </div>
 </button>

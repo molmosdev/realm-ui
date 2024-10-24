@@ -8,19 +8,12 @@ import { fadeInOutAnimation } from '../../../shared/animations/animations';
 @Component({
   selector: 'r-button',
   standalone: true,
-  imports: [
-    NgClass,
-    Spinner,
-    NgStyle
-  ],
+  imports: [NgClass, Spinner, NgStyle],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  animations: [
-    fadeInOutAnimation
-  ]
+  animations: [fadeInOutAnimation],
 })
 export class Button {
-
   /* Inputs */
   type = input<ButtonTypeEnum>(ButtonTypeEnum.Primary);
   loading = input<boolean>(false);
@@ -47,15 +40,17 @@ export class Button {
     let maxBorderRadius = 50;
 
     // Calculate the corresponding padding
-    let padding = minPadding + (maxPadding - minPadding) * ((borderRadiusNumber - minBorderRadius) / (maxBorderRadius - minBorderRadius));
+    let padding =
+      minPadding +
+      (maxPadding - minPadding) * ((borderRadiusNumber - minBorderRadius) / (maxBorderRadius - minBorderRadius));
 
     // Ensure padding does not exceed the limits
     padding = Math.max(padding, minPadding);
     padding = Math.min(padding, maxPadding);
 
     return {
-      'padding-inline': `${padding}px`
-    }
+      'padding-inline': `${padding}px`,
+    };
   }
 
   /**
@@ -67,8 +62,8 @@ export class Button {
     return {
       active: this.loading(),
       size: 18,
-      color: 'var(--primary-foreground)'
-    }
+      color: 'var(--primary-foreground)',
+    };
   }
 
   /**
@@ -80,5 +75,4 @@ export class Button {
       event.preventDefault();
     }
   }
-
 }

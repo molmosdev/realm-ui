@@ -4,16 +4,14 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'r-switch',
   standalone: true,
-  imports: [
-    NgClass
-  ],
+  imports: [NgClass],
   templateUrl: './switch.component.html',
-  styleUrl: './switch.component.scss'
+  styleUrl: './switch.component.scss',
 })
 export class Switch {
   value: ModelSignal<boolean> = model(false);
   label: InputSignal<string> = input<string>('');
-  onChange: OutputEmitterRef<boolean> = output<boolean>()
+  onChange: OutputEmitterRef<boolean> = output<boolean>();
 
   /**
    * Toggle the switch value

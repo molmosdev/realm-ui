@@ -45,7 +45,8 @@
       }
     }
 
-    &.secondary, &.ghost {
+    &.secondary,
+    &.ghost {
       color: var(--secondary-foreground);
     }
 

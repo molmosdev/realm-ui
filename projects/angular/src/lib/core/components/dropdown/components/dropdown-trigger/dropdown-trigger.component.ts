@@ -5,15 +5,12 @@ import { Component, ElementRef, input, output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './dropdown-trigger.component.html',
-  styleUrl: './dropdown-trigger.component.scss'
+  styleUrl: './dropdown-trigger.component.scss',
 })
 export class DropdownTrigger {
   disabled = input<boolean>(false);
   triggerEmitter = output<void>();
   el = this.elementRef.nativeElement;
 
-  constructor(
-    private elementRef: ElementRef
-  ) {
-  }
+  constructor(private elementRef: ElementRef) {}
 }

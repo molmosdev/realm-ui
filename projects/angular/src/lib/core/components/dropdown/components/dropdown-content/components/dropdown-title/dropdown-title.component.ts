@@ -5,7 +5,7 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './dropdown-title.component.html',
-  styleUrl: './dropdown-title.component.scss'
+  styleUrl: './dropdown-title.component.scss',
 })
 export class DropdownTitle {
   /* Signals */

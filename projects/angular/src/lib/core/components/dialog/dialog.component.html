@@ -1,10 +1,10 @@
 @if (show()) {
-  <span @fadeInOutAnimation class="background" (click)="close()" [ngClass]="{'click-outside': clickOutside()}"></span>
+  <span @fadeInOutAnimation class="background" (click)="close()" [ngClass]="{ 'click-outside': clickOutside() }"></span>
   <section @fadeInOutZoomAnimation>
     @if (lazyContent()) {
       <ng-container [ngTemplateOutlet]="lazyContent()?.tpl!"></ng-container>
     } @else {
-      <ng-content/>
+      <ng-content />
     }
   </section>
 }

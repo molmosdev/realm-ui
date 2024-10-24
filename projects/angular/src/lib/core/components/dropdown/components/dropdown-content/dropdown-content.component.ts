@@ -7,15 +7,10 @@ import { LazyContentDirective } from '../../../../../shared/directives/lazy-cont
 @Component({
   selector: 'r-dropdown-content',
   standalone: true,
-  imports: [
-    NgTemplateOutlet,
-    NgStyle
-  ],
+  imports: [NgTemplateOutlet, NgStyle],
   templateUrl: './dropdown-content.component.html',
   styleUrl: './dropdown-content.component.scss',
-  animations: [
-    fadeInOutAnimation
-  ]
+  animations: [fadeInOutAnimation],
 })
 export class DropdownContent {
   /* Signals */

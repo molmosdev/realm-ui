@@ -6,13 +6,10 @@ import { DropdownContent } from './components/dropdown-content/dropdown-content.
 @Component({
   selector: 'r-dropdown',
   standalone: true,
-  imports: [
-    NgStyle,
-    NgTemplateOutlet
-  ],
+  imports: [NgStyle, NgTemplateOutlet],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
-  animations: []
+  animations: [],
 })
 export class Dropdown {
   /* Signals */

@@ -4,12 +4,9 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 @Component({
   selector: 'r-dropdown-item',
   standalone: true,
-  imports: [
-    NgClass,
-    NgTemplateOutlet
-  ],
+  imports: [NgClass, NgTemplateOutlet],
   templateUrl: './dropdown-item.component.html',
-  styleUrl: './dropdown-item.component.scss'
+  styleUrl: './dropdown-item.component.scss',
 })
 export class DropdownItem {
   /* Signals */

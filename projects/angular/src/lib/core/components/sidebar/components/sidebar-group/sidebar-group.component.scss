@@ -37,7 +37,7 @@
 
     &:before {
       display: flex;
-      content: "";
+      content: '';
       height: 100%;
       width: 3px;
       background: color-mix(in srgb, var(--primary-foreground) 10%, var(--primary));

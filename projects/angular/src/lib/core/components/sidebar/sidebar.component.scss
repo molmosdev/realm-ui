@@ -11,7 +11,8 @@
     gap: 12px;
     background: var(--app-background);
 
-    &.open-pinned, &.open-unpinned {
+    &.open-pinned,
+    &.open-unpinned {
       width: 245px;
     }
 
@@ -43,7 +44,8 @@
         display: flex;
       }
 
-      .logo:hover, .pin:hover {
+      .logo:hover,
+      .pin:hover {
         cursor: pointer;
       }
     }

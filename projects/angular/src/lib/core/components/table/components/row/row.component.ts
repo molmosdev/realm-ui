@@ -5,22 +5,18 @@ import { Dropdown } from '../../../dropdown/dropdown.component';
 @Component({
   selector: 'r-row',
   standalone: true,
-  imports: [
-    NgClass
-  ],
+  imports: [NgClass],
   templateUrl: './row.component.html',
-  styleUrl: './row.component.scss'
+  styleUrl: './row.component.scss',
 })
 export class Row {
   header = input<boolean>(false);
   dropdown = contentChild(Dropdown);
 
-  constructor(
-    private el: ElementRef
-  ) {
+  constructor(private el: ElementRef) {
     effect(() => {
       this.setRowStyles();
-    })
+    });
   }
 
   /**

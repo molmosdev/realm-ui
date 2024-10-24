@@ -5,12 +5,9 @@ import { NgClass, NgStyle } from '@angular/common';
 @Component({
   selector: 'r-sidebar-group',
   standalone: true,
-  imports: [
-    NgStyle,
-    NgClass
-  ],
+  imports: [NgStyle, NgClass],
   templateUrl: './sidebar-group.component.html',
-  styleUrl: './sidebar-group.component.scss'
+  styleUrl: './sidebar-group.component.scss',
 })
 export class SidebarGroup {
   isOpen = signal<boolean>(false);

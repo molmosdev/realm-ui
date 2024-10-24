@@ -8,17 +8,10 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'r-sidebar',
   standalone: true,
-  imports: [
-    SidebarItem,
-    NgClass
-  ],
+  imports: [SidebarItem, NgClass],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
-  animations: [
-    fadeInOutAnimation,
-    sidebarAnimation,
-    fadeInOutHorizontalTrigger
-  ]
+  animations: [fadeInOutAnimation, sidebarAnimation, fadeInOutHorizontalTrigger],
 })
 export class Sidebar {
   isOpen = signal<boolean>(true);
@@ -35,9 +28,9 @@ export class Sidebar {
       value: '',
       params: {
         translateFrom: 'translateX(-5px)',
-        translateTo: 'translateX(0)'
-      }
-    }
+        translateTo: 'translateX(0)',
+      },
+    };
   }
 
   /**
@@ -59,10 +52,7 @@ export class Sidebar {
    * @param {SidebarGroup} group
    * @param {boolean} isOpen
    */
-  setRecursiveGroupsState(
-    group: SidebarGroup,
-    isOpen: boolean
-  ): void {
+  setRecursiveGroupsState(group: SidebarGroup, isOpen: boolean): void {
     group.isOpen.set(isOpen);
     group.items().forEach(item => item.isOpen.set(isOpen));
     group.groups().forEach(group => {

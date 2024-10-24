@@ -1,11 +1,11 @@
 <div (click)="expanded.set(!expanded())" class="toggle">
-  <ng-content select="[r-sidebar-group-item-toggle]"/>
+  <ng-content select="[r-sidebar-group-item-toggle]" />
   @if (isOpen()) {
     <div class="arrows-container">
       @if (expanded()) {
-        <ng-content select="[r-sidebar-group-arrow-up]"/>
+        <ng-content select="[r-sidebar-group-arrow-up]" />
       } @else {
-        <ng-content select="[r-sidebar-group-arrow-down]"/>
+        <ng-content select="[r-sidebar-group-arrow-down]" />
       }
     </div>
   }

@@ -4,11 +4,9 @@ import { NgStyle } from '@angular/common';
 @Component({
   selector: 'r-row-item',
   standalone: true,
-  imports: [
-    NgStyle
-  ],
+  imports: [NgStyle],
   templateUrl: './row-item.component.html',
-  styleUrl: './row-item.component.scss'
+  styleUrl: './row-item.component.scss',
 })
 export class RowItem {
   widthPx = input<number>();
@@ -17,7 +15,7 @@ export class RowItem {
   style = computed(() => {
     return {
       width: `${this.widthPx()}px`,
-      justifyContent: this.alignedLeft() ? 'flex-start' : 'center'
+      justifyContent: this.alignedLeft() ? 'flex-start' : 'center',
     };
   });
 }

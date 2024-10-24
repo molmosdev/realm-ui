@@ -5,15 +5,10 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 @Component({
   selector: 'r-sidebar-item',
   standalone: true,
-  imports: [
-    NgTemplateOutlet,
-    NgClass
-  ],
+  imports: [NgTemplateOutlet, NgClass],
   templateUrl: './sidebar-item.component.html',
   styleUrl: './sidebar-item.component.scss',
-  animations: [
-    fadeInOutAnimation
-  ]
+  animations: [fadeInOutAnimation],
 })
 export class SidebarItem {
   isOpen = signal<boolean>(true);

@@ -6,16 +6,10 @@ import { LazyContentDirective } from '../../../shared/directives/lazy-content.di
 @Component({
   selector: 'r-dialog',
   standalone: true,
-  imports: [
-    NgTemplateOutlet,
-    NgClass
-  ],
+  imports: [NgTemplateOutlet, NgClass],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
-  animations: [
-    fadeInOutZoomAnimation,
-    fadeInOutAnimation
-  ]
+  animations: [fadeInOutZoomAnimation, fadeInOutAnimation],
 })
 export class Dialog {
   /* Signals*/

@@ -1,25 +1,26 @@
-<div [@fadeInOutHorizontalTrigger]="fadeInOutHorizontalTriggerData"
-     [@sidebarAnimation]="isOpen() ? 'open' : 'closed'"
-     class="sidebar-container">
+<div
+  [@fadeInOutHorizontalTrigger]="fadeInOutHorizontalTriggerData"
+  [@sidebarAnimation]="isOpen() ? 'open' : 'closed'"
+  class="sidebar-container">
   <div class="sidebar-header">
     <div class="logo">
-      <ng-content select="[r-sidebar-logo]"/>
+      <ng-content select="[r-sidebar-logo]" />
     </div>
     @if (isOpen()) {
       <div class="toggle" (click)="setSidenavState(false)" @fadeInOutAnimation>
-        <ng-content select="[r-sidebar-close-toggle]"/>
+        <ng-content select="[r-sidebar-close-toggle]" />
       </div>
     }
   </div>
   <div class="content">
     <div class="items-container">
-      <ng-content select="[r-sidebar-items]"/>
+      <ng-content select="[r-sidebar-items]" />
     </div>
     @if (!isOpen()) {
       <div class="toggle" (click)="setSidenavState(true)" @fadeInOutAnimation>
-        <ng-content select="[r-sidebar-open-toggle]"/>
+        <ng-content select="[r-sidebar-open-toggle]" />
       </div>
     }
-    <ng-content/>
+    <ng-content />
   </div>
 </div>
