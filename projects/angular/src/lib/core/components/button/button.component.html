@@ -1,4 +1,4 @@
-<button #button [ngClass]="type()" [ngStyle]="paddingInlineStyle" tabindex="0">
+<button [ngClass]="type()" tabindex="0" (click)="onClick.emit()">
   @if (spinnerData.active) {
     <r-spinner [data]="spinnerData" @fadeInOutTrigger />
   }
