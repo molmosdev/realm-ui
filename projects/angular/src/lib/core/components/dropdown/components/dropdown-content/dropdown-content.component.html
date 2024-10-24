@@ -2,7 +2,7 @@
   <section
     #dropdown
     id="dropdown"
-    @fadeInOutAnimation
+    @fadeInOutTrigger
     (click)="closeEmitter.emit()"
     [ngStyle]="{ width: width() + 'px' }">
     @if (lazyContent()) {

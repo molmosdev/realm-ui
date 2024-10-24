@@ -1,6 +1,6 @@
 import { Component, contentChildren, signal } from '@angular/core';
 import { SidebarItem } from './components/sidebar-item/sidebar-item.component';
-import { fadeInOutAnimation, fadeInOutHorizontalTrigger } from '../../../shared/animations/animations';
+import { fadeInOutTrigger, fadeInOutHorizontalTrigger } from '../../../shared/animations/animations';
 import { sidebarAnimation } from './animations/animations';
 import { SidebarGroup } from './components/sidebar-group/sidebar-group.component';
 import { NgClass } from '@angular/common';
@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
   imports: [SidebarItem, NgClass],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
-  animations: [fadeInOutAnimation, sidebarAnimation, fadeInOutHorizontalTrigger],
+  animations: [fadeInOutTrigger, sidebarAnimation, fadeInOutHorizontalTrigger],
 })
 export class Sidebar {
   isOpen = signal<boolean>(true);

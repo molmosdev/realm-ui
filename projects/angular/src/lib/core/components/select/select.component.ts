@@ -13,14 +13,14 @@ import {
 import { NgClass, NgStyle } from '@angular/common';
 import { Option } from '../../../shared/components/option/option.component';
 import { OptionsPositioningEnum } from '../../../shared/enums/options-positioning.enum';
-import { fadeInOutAnimation } from '../../../shared/animations/animations';
+import { fadeInOutTrigger } from '../../../shared/animations/animations';
 
 @Component({
   selector: 'r-select',
   standalone: true,
   imports: [NgStyle, NgClass],
   templateUrl: './select.component.html',
-  animations: [fadeInOutAnimation],
+  animations: [fadeInOutTrigger],
 })
 export class Select {
   /** Signal for the label of the select */

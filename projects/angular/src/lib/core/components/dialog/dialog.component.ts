@@ -1,5 +1,5 @@
 import { Component, contentChild, HostListener, model } from '@angular/core';
-import { fadeInOutAnimation, fadeInOutZoomAnimation } from '../../../shared/animations/animations';
+import { fadeInOutTrigger, fadeInOutZoomTrigger } from '../../../shared/animations/animations';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { LazyContentDirective } from '../../../shared/directives/lazy-content.directive';
 
@@ -9,7 +9,7 @@ import { LazyContentDirective } from '../../../shared/directives/lazy-content.di
   imports: [NgTemplateOutlet, NgClass],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
-  animations: [fadeInOutZoomAnimation, fadeInOutAnimation],
+  animations: [fadeInOutZoomTrigger, fadeInOutTrigger],
 })
 export class Dialog {
   /* Signals*/

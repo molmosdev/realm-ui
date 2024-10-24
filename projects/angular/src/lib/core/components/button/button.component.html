@@ -1,6 +1,6 @@
 <button #button [ngClass]="type()" [ngStyle]="paddingInlineStyle" class="f-400" id="r-button" tabindex="0">
   @if (spinnerData.active) {
-    <r-spinner [data]="spinnerData" @fadeInOutAnimation />
+    <r-spinner [data]="spinnerData" @fadeInOutTrigger />
   }
   <ng-content />
 </button>

@@ -13,7 +13,6 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgClass, registerLocaleData } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
-import { incorrectBackgroundTrigger } from '../../../shared/animations/animations';
 import localeEs from '@angular/common/locales/es';
 import { ValueType } from './enums/value-type.enum';
 
@@ -22,7 +21,6 @@ import { ValueType } from './enums/value-type.enum';
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, NgClass],
   templateUrl: './number.component.html',
-  animations: [incorrectBackgroundTrigger],
   providers: [CurrencyPipe, { provide: LOCALE_ID, useValue: 'es-ES' }],
 })
 export class Number implements OnInit {

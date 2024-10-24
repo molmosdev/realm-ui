@@ -1,7 +1,7 @@
 import { Component, contentChild, ElementRef, HostListener, input, output, signal, viewChild } from '@angular/core';
 import { DropdownPositioningEnum } from '../../enums/dropdown-positioning.enum';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { fadeInOutAnimation } from '../../../../../shared/animations/animations';
+import { fadeInOutTrigger } from '../../../../../shared/animations/animations';
 import { LazyContentDirective } from '../../../../../shared/directives/lazy-content.directive';
 
 @Component({
@@ -10,7 +10,7 @@ import { LazyContentDirective } from '../../../../../shared/directives/lazy-cont
   imports: [NgTemplateOutlet, NgStyle],
   templateUrl: './dropdown-content.component.html',
   styleUrl: './dropdown-content.component.scss',
-  animations: [fadeInOutAnimation],
+  animations: [fadeInOutTrigger],
 })
 export class DropdownContent {
   /* Signals */

@@ -3,7 +3,7 @@ import { ButtonTypeEnum } from './enums/button-type.enum';
 import { NgClass, NgStyle } from '@angular/common';
 import { Spinner } from '../spinner/spinner.component';
 import { ISpinner } from '../spinner/models/spinner.model';
-import { fadeInOutAnimation } from '../../../shared/animations/animations';
+import { fadeInOutTrigger } from '../../../shared/animations/animations';
 
 @Component({
   selector: 'r-button',
@@ -11,7 +11,7 @@ import { fadeInOutAnimation } from '../../../shared/animations/animations';
   imports: [NgClass, Spinner, NgStyle],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  animations: [fadeInOutAnimation],
+  animations: [fadeInOutTrigger],
 })
 export class Button {
   /* Inputs */

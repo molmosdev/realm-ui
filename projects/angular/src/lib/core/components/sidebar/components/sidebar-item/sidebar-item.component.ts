@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { fadeInOutAnimation } from '../../../../../shared/animations/animations';
+import { fadeInOutTrigger } from '../../../../../shared/animations/animations';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
   imports: [NgTemplateOutlet, NgClass],
   templateUrl: './sidebar-item.component.html',
   styleUrl: './sidebar-item.component.scss',
-  animations: [fadeInOutAnimation],
+  animations: [fadeInOutTrigger],
 })
 export class SidebarItem {
   isOpen = signal<boolean>(true);

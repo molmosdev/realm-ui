@@ -7,7 +7,7 @@
       <ng-content select="[r-sidebar-logo]" />
     </div>
     @if (isOpen()) {
-      <div class="toggle" (click)="setSidenavState(false)" @fadeInOutAnimation>
+      <div class="toggle" (click)="setSidenavState(false)" @fadeInOutTrigger>
         <ng-content select="[r-sidebar-close-toggle]" />
       </div>
     }
@@ -17,7 +17,7 @@
       <ng-content select="[r-sidebar-items]" />
     </div>
     @if (!isOpen()) {
-      <div class="toggle" (click)="setSidenavState(true)" @fadeInOutAnimation>
+      <div class="toggle" (click)="setSidenavState(true)" @fadeInOutTrigger>
         <ng-content select="[r-sidebar-open-toggle]" />
       </div>
     }

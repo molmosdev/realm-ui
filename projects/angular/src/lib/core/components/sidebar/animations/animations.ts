@@ -4,9 +4,9 @@ export const sidebarAnimation = trigger('sidebarAnimation', [
   state('open', style({ width: '245px' })),
   state('closed', style({ width: '40px' })),
   transition('closed => open', [
-    group([animate('0.1s ease-in-out'), query('@fadeInOutAnimation', animateChild(), { optional: true, delay: 0 })]),
+    group([animate('0.1s ease-in-out'), query('@fadeInOutTrigger', animateChild(), { optional: true, delay: 0 })]),
   ]),
   transition('open => closed', [
-    group([query('@fadeInOutAnimation', animateChild(), { optional: true }), animate('0.1s 0.1s ease-in-out')]),
+    group([query('@fadeInOutTrigger', animateChild(), { optional: true }), animate('0.1s 0.1s ease-in-out')]),
   ]),
 ]);

@@ -1,6 +1,6 @@
 <ng-content select="[r-sidebar-item-icon]" />
 @if (isOpen()) {
-  <div class="item" @fadeInOutAnimation>
+  <div class="item" @fadeInOutTrigger>
     <ng-content select="[r-sidebar-item-text]" />
   </div>
 }
