@@ -1,11 +1,11 @@
 import { Component, effect, input, model, output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'r-text',
   standalone: true,
-  imports: [FormsModule, NgClass],
+  imports: [FormsModule, ReactiveFormsModule, NgClass],
   templateUrl: './text.component.html',
   animations: [],
 })
@@ -19,6 +19,7 @@ export class Text {
   clearable = input<boolean>(false);
   inputValue: string = '';
   blocked = input<boolean>(false);
+  formControl = input<FormControl | null>(null);
 
   constructor() {
     effect(() => {

@@ -1,9 +1,18 @@
-<input
-  (keyup)="updateValue(inputValue)"
-  [disabled]="blocked()"
-  [(ngModel)]="inputValue"
-  [ngClass]="{ 'has-label': label(), 'has-value': inputValue, error: error() }"
-  [type]="type()" />
+@if (formControl()) {
+  <input
+    *ngIf="formControl()"
+    [formControl]="formControl()!"
+    [disabled]="blocked()"
+    [ngClass]="{ 'has-label': label(), 'has-value': formControl()!.value, error: error() }"
+    [type]="type()" />
+} @else {
+  <input
+    (keyup)="updateValue(inputValue)"
+    [disabled]="blocked()"
+    [(ngModel)]="inputValue"
+    [ngClass]="{ 'has-label': label(), 'has-value': inputValue, error: error() }"
+    [type]="type()" />
+}
 @if (label()) {
   <label [ngClass]="{ 'has-value': inputValue, error: error() }">
     {{ label() }}
