@@ -1,9 +1,9 @@
 <textarea
-  (keyup)="updateValue(inputValue)"
-  [(ngModel)]="inputValue"
-  [ngClass]="{ 'has-label': label(), 'has-value': inputValue, error: error() }"></textarea>
+  (keyup)="updateValue($event)"
+  [value]="displayValue()"
+  [ngClass]="{ 'has-label': label(), 'has-value': displayValue(), error: error() }"></textarea>
 @if (label()) {
-  <label [ngClass]="{ 'has-value': inputValue, error: error() }">
+  <label [ngClass]="{ 'has-value': displayValue(), error: error() }">
     {{ label() }}
   </label>
 }
