@@ -1,24 +1,24 @@
 @if (formControl()) {
   <input
-    *ngIf="formControl()"
     [formControl]="formControl()!"
-    [disabled]="blocked()"
     [ngClass]="{ 'has-label': label(), 'has-value': formControl()!.value, error: error() }"
-    [type]="type()" />
+    [type]="type()"
+    [value]="displayValue()"
+    (blur)="onTouchedFn()" />
 } @else {
   <input
-    (keyup)="updateValue(inputValue)"
-    [disabled]="blocked()"
-    [(ngModel)]="inputValue"
-    [ngClass]="{ 'has-label': label(), 'has-value': inputValue, error: error() }"
+    (keyup)="updateValue($event)"
+    [disabled]="disabled()"
+    [value]="displayValue()"
+    [ngClass]="{ 'has-label': label(), 'has-value': displayValue(), error: error() }"
     [type]="type()" />
 }
 @if (label()) {
-  <label [ngClass]="{ 'has-value': inputValue, error: error() }">
+  <label [ngClass]="{ 'has-value': formControl() ? formControl()!.value : displayValue(), error: error() }">
     {{ label() }}
   </label>
 }
-@if (clearable() && inputValue) {
+@if (clearable() && displayValue()) {
   <div class="right-button" (click)="clear()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
