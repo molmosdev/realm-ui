@@ -121,8 +121,8 @@ export class Select {
 
   handleOptionsStates(): void {
     this.options().forEach((option, index) => {
-      option.selected = index === this.selectedIndex();
-      option.highlighted = index === this.highlightedIndex();
+      option.selected.set(index === this.selectedIndex());
+      option.highlighted.set(index === this.highlightedIndex());
     });
   }
 

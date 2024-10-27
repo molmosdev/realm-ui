@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, ElementRef, output, input } from '@angular/core';
+import { Component, ElementRef, output, input, signal } from '@angular/core';
 
 @Component({
   selector: 'r-option',
@@ -21,10 +21,10 @@ export class Option {
   suffix = input<string>('');
 
   /* Signal to indicate if the option is selected */
-  selected: boolean = false;
+  selected = signal<boolean>(false);
 
   /* Signal to indicate if the option is highlighted */
-  highlighted: boolean = false;
+  highlighted = signal<boolean>(false);
 
   /* Signal for the output when the option is selected */
   select = output<Option>();
@@ -39,13 +39,13 @@ export class Option {
 
   onMouseEnter() {
     if (!this.disabled() && !this.el.nativeElement.parentElement.parentElement.classList.contains('keyboard-active')) {
-      this.highlighted = true;
+      this.highlighted.set(true);
     }
   }
 
   onMouseLeave() {
     if (!this.disabled() && !this.el.nativeElement.parentElement.parentElement.classList.contains('keyboard-active')) {
-      this.highlighted = false;
+      this.highlighted.set(false);
     }
   }
 }
