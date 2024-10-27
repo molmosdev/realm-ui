@@ -11,7 +11,6 @@ import { LazyContentDirective } from '../../../shared/directives/lazy-content.di
   animations: [fadeInOutZoomTrigger, fadeInOutTrigger],
 })
 export class Dialog {
-  /* Signals*/
   show = model.required<boolean>();
   lazyContent = contentChild(LazyContentDirective);
   clickOutside = model<boolean>(true);
@@ -21,7 +20,7 @@ export class Dialog {
    */
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      this.show.set(false);
+      this.close();
       event.preventDefault();
     }
   }

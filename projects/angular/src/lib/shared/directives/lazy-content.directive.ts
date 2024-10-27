@@ -1,7 +1,7 @@
 import { Directive, inject, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[moLazyContent]',
+  selector: '[r-lazy]',
   standalone: true,
 })
 export class LazyContentDirective {
