@@ -66,3 +66,7 @@ export * from './lib/shared/components/option/option.component';
 
 /* Enums */
 export * from './lib/shared/enums/options-positioning.enum';
+
+/* Tabs */
+export * from './lib/core/components/tabs/tabs.component';
+export * from './lib/core/components/tabs/components/tab/tab.component';
