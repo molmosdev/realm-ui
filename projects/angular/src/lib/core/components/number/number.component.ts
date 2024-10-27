@@ -1,16 +1,4 @@
-import {
-  Component,
-  effect,
-  input,
-  InputSignal,
-  LOCALE_ID,
-  model,
-  ModelSignal,
-  OnInit,
-  output,
-  OutputEmitterRef,
-} from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, computed, input, LOCALE_ID, model, output } from '@angular/core';
 import { NgClass, registerLocaleData } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
@@ -19,40 +7,37 @@ import { ValueType } from './enums/value-type.enum';
 @Component({
   selector: 'r-number',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, NgClass],
+  imports: [NgClass],
   templateUrl: './number.component.html',
   providers: [CurrencyPipe, { provide: LOCALE_ID, useValue: 'es-ES' }],
 })
-export class Number implements OnInit {
-  value: ModelSignal<number | null> = model<number | null>(null);
-  label: InputSignal<string | undefined> = input<string | undefined>(undefined);
-  error: InputSignal<boolean> = input<boolean>(false);
-  valueType: InputSignal<ValueType> = input<ValueType>(ValueType.Integer);
-  onChange: OutputEmitterRef<number | null> = output<number | null>();
-  inputValue: string | null = null;
+export class Number {
+  value = model<number | null>(null);
+  displayValue = computed(() => this.formatValue(this.value()));
+  label = input<string | undefined>(undefined);
+  error = input<boolean>(false);
+  valueType = input<ValueType>(ValueType.Integer);
+  onChange = output<number | null>();
   ValueType = ValueType;
+  suffix = input<string | undefined>(undefined);
+  disabled = model<boolean>(false);
+  debounceTimer: any;
 
   constructor(private currencyPipe: CurrencyPipe) {
     registerLocaleData(localeEs, 'es-ES');
   }
-
-  ngOnInit(): void {
-    this.inputValue = this.formatValue(this.value());
-  }
-
-  private debounceTimer: any;
 
   /**
    * Update the value
    *
    * @param {string | null} newValue
    */
-  updateValue(newValue: string | null): void {
+  updateValue(event: KeyboardEvent): void {
+    const newValue = (event.target as HTMLInputElement).value;
     clearTimeout(this.debounceTimer);
     this.debounceTimer = setTimeout(() => {
       const numericValue = this.parseValue(newValue);
       this.value.set(numericValue);
-      this.inputValue = this.formatValue(numericValue);
       this.onChange.emit(numericValue);
     }, 500);
   }
