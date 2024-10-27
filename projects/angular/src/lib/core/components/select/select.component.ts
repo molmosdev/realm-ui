@@ -128,10 +128,19 @@ export class Select {
 
   handleExternalSelectedValue(): void {
     if (this.lastSelectedValue !== this.selectedValue()) {
-      const selectedOptionIndex = this.options().findIndex(option => option.value() === this.selectedValue());
-      if (selectedOptionIndex !== -1) {
-        this.selectOption(this.options()[selectedOptionIndex], selectedOptionIndex);
-        this.highlightOption(selectedOptionIndex);
+      if (this.selectedValue()) {
+        const selectedOptionIndex = this.options().findIndex(option => option.value() === this.selectedValue());
+        if (selectedOptionIndex !== -1) {
+          this.selectOption(this.options()[selectedOptionIndex], selectedOptionIndex);
+          this.highlightOption(selectedOptionIndex);
+          this.handleOptionsStates();
+        }
+      } else {
+        this.selectedValue.set(null);
+        this.lastSelectedValue = null;
+        this.selectedContent.set(null);
+        this.selectedIndex.set(-1);
+        this.highlightOption(-1);
         this.handleOptionsStates();
       }
     }
