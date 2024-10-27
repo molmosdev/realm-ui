@@ -1,19 +1,11 @@
-import { Component, computed, forwardRef, input, model, output } from '@angular/core';
-import { FormsModule, FormControl, ReactiveFormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, computed, input, model, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'r-text',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgClass],
+  imports: [NgClass],
   templateUrl: './text.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => Text),
-      multi: true,
-    },
-  ],
   animations: [],
 })
 export class Text {
@@ -21,7 +13,6 @@ export class Text {
   displayValue = computed(() => this.value() || '');
   label = input<string | undefined>(undefined);
   error = input<boolean>(false);
-  type = input<string>('text');
   hasValueForced = input<boolean>(false);
   onChange = output<string | null>();
   clearable = input<boolean>(false);
@@ -39,7 +30,7 @@ export class Text {
   /**
    * Update the value
    *
-   * @param {string} newValue
+   * @param {KeyboardEvent} event
    */
   updateValue(event: KeyboardEvent): void {
     const newValue = (event.target as HTMLInputElement).value;
@@ -50,28 +41,5 @@ export class Text {
   clear() {
     this.value.set(null);
     this.onChange.emit(null);
-  }
-
-  /* ControlValueAccessor */
-
-  formControl = input<FormControl | null>(null);
-
-  onChangeFn: (value: string) => void = () => {};
-  onTouchedFn: () => void = () => {};
-
-  writeValue(value: string): void {
-    this.value.set(value);
-  }
-
-  registerOnChange(fn: (value: string) => void): void {
-    this.onChangeFn = fn;
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.onTouchedFn = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled.set(isDisabled);
   }
 }
