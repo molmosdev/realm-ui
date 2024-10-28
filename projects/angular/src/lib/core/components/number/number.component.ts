@@ -37,7 +37,14 @@ export class Number {
    * @param {string | null} newValue
    */
   updateValue(event: KeyboardEvent): void {
-    const newValue = (event.target as HTMLInputElement).value;
+    let newValue = (event.target as HTMLInputElement).value;
+
+    // If valueType is Integer, filter out non-numeric characters
+    if (this.valueType() === ValueType.Integer) {
+      newValue = newValue.replace(/[^0-9]/g, '');
+      (event.target as HTMLInputElement).value = newValue; // Update the input field with the filtered value
+    }
+
     clearTimeout(this.debounceTimer);
     this.debounceTimer = setTimeout(() => {
       const numericValue = this.parseValue(newValue);
