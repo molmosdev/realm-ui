@@ -1,5 +1,11 @@
 @if (!selectedContent()) {
-  <r-text [label]="label()" [error]="error()" (onChange)="handleTextChanges($event)" />
+  <r-text
+    [label]="label()"
+    [(value)]="query"
+    [error]="error()"
+    (onChange)="handleTextChanges($event)"
+    [searching]="searching()"
+    [clearable]="!!(query() && !searching())" />
 } @else {
   <div
     [ngClass]="{ 'has-label': label(), error: error() }"
@@ -29,7 +35,7 @@
     </div>
   </div>
 }
-@if (isOpen()) {
+@if (isOpen() && !searching()) {
   <div class="dropdown-wrapper" @fadeInOutTrigger [ngClass]="positioning()">
     <ul class="dropdown" role="listbox" #optionsWrapper [ngStyle]="{ 'max-height.px': optionsMaxHeight() }">
       @if (options() && options().length > 0) {

@@ -73,6 +73,12 @@ export class Search {
   /** Signal for the no results message */
   noResultsMessage = input<string>('No results found');
 
+  /** Signal for the searching state */
+  searching = input<boolean>(false);
+
+  /** Signal for the search query */
+  query = model<string | null>(null);
+
   constructor(
     private elementRef: ElementRef,
     private utilsService: UtilsService
@@ -226,16 +232,15 @@ export class Search {
     this.selectedContent.set(null);
     this.highlightedIndex.set(-1);
     this.isOpen.set(false);
+    this.query.set(null);
     this.handleOptionsStates();
     $event.stopPropagation();
   }
 
   handleTextChanges(textContent: string | null): void {
-    console.log('textContent', textContent);
     if (textContent) {
       this.utilsService.debounce(() => {
         this.onTextChanges.emit(textContent);
-        console.log('debounced');
         this.isOpen.set(true);
       }, this.debounceDelay());
     } else {
