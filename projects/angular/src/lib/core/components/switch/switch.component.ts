@@ -6,7 +6,6 @@ import { NgClass } from '@angular/common';
   standalone: true,
   imports: [NgClass],
   templateUrl: './switch.component.html',
-  styleUrl: './switch.component.scss',
 })
 export class Switch {
   value: ModelSignal<boolean> = model(false);
