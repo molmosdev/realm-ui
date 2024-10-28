@@ -43,6 +43,10 @@ export class Number {
     if (this.valueType() === ValueType.Integer) {
       newValue = newValue.replace(/[^0-9]/g, '');
       (event.target as HTMLInputElement).value = newValue; // Update the input field with the filtered value
+    } else {
+      // If valueType is Currency, Percentage, or Decimal, filter out non-numeric characters and commas
+      newValue = newValue.replace(/[^0-9.,]/g, '');
+      (event.target as HTMLInputElement).value = newValue; // Update the input field with the filtered value
     }
 
     clearTimeout(this.debounceTimer);
@@ -90,8 +94,6 @@ export class Number {
     if (!value) {
       return null;
     }
-
-    value = value.replace(/[^0-9.,]/g, '');
 
     if (
       this.valueType() === ValueType.Currency ||
