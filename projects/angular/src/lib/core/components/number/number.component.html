@@ -1,17 +1,17 @@
 <input
   (keyup)="updateValue($event)"
   [disabled]="disabled()"
-  [value]="displayValue()"
+  [(ngModel)]="displayValue"
   [ngClass]="{
     'has-label': label(),
-    'has-value': displayValue(),
+    'has-value': displayValue,
     error: error(),
   }"
   type="text" />
 @if (label()) {
   <label
     [ngClass]="{
-      'has-value': displayValue(),
+      'has-value': displayValue,
       error: error(),
     }">
     {{ label() }}

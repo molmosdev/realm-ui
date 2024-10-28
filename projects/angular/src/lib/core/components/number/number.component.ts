@@ -1,19 +1,20 @@
-import { Component, computed, input, LOCALE_ID, model, output } from '@angular/core';
+import { Component, effect, input, LOCALE_ID, model, output } from '@angular/core';
 import { NgClass, registerLocaleData } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ValueType } from './enums/value-type.enum';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'r-number',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, FormsModule],
   templateUrl: './number.component.html',
   providers: [CurrencyPipe, { provide: LOCALE_ID, useValue: 'es-ES' }],
 })
 export class Number {
   value = model<number | null>(null);
-  displayValue = computed(() => this.formatValue(this.value()));
+  displayValue: string | null = null;
   label = input<string | undefined>(undefined);
   error = input<boolean>(false);
   valueType = input<ValueType>(ValueType.Integer);
@@ -25,6 +26,9 @@ export class Number {
 
   constructor(private currencyPipe: CurrencyPipe) {
     registerLocaleData(localeEs, 'es-ES');
+    effect(() => {
+      this.displayValue = this.formatValue(this.value());
+    });
   }
 
   /**
@@ -38,6 +42,7 @@ export class Number {
     this.debounceTimer = setTimeout(() => {
       const numericValue = this.parseValue(newValue);
       this.value.set(numericValue);
+      this.displayValue = this.formatValue(numericValue);
       this.onChange.emit(numericValue);
     }, 500);
   }
