@@ -1,10 +1,11 @@
 import { Component, computed, input, model, output } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Spinner } from '../spinner/spinner.component';
 
 @Component({
   selector: 'r-text',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, Spinner],
   templateUrl: './text.component.html',
   animations: [],
 })
@@ -17,6 +18,7 @@ export class Text {
   onChange = output<string | null>();
   clearable = input<boolean>(false);
   disabled = model<boolean>(false);
+  searching = input<boolean>(false);
 
   /**
    * Get the input trigger state
@@ -34,8 +36,10 @@ export class Text {
    */
   updateValue(event: KeyboardEvent): void {
     const newValue = (event.target as HTMLInputElement).value;
-    this.value.set(newValue === '' ? null : newValue);
-    this.onChange.emit(this.value());
+    if (newValue !== this.value()) {
+      this.value.set(newValue === '' ? null : newValue);
+      this.onChange.emit(this.value());
+    }
   }
 
   clear() {
