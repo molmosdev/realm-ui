@@ -70,7 +70,7 @@
       @if (options() && options().length > 0) {
         <ng-content></ng-content>
       } @else {
-        <div class="no-options">No hay resultados</div>
+        <div class="no-options">{{ noResultsMessage() }}</div>
       }
     </ul>
   </div>

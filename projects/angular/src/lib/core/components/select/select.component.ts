@@ -60,10 +60,13 @@ export class Select {
   optionsMaxHeight = input<number>(200);
 
   /** Output event for changes */
-  onChanges = output<void>();
+  onChanges = output<string | null>();
 
   /* Signal for the positioning of the options */
   positioning = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
+
+  /** Signal for the no results message */
+  noResultsMessage = input<string>('No results found');
 
   constructor(private elementRef: ElementRef) {
     effect(
@@ -102,7 +105,6 @@ export class Select {
         this.selectOption(optionEmitted, index);
         this.highlightOption(index);
         this.handleOptionsStates();
-        this.onChanges.emit();
         this.isOpen.set(false);
       });
     });
@@ -113,6 +115,7 @@ export class Select {
     this.lastSelectedValue = option.value();
     this.selectedContent.set(option.el.nativeElement.innerText.trim());
     this.selectedIndex.set(index);
+    this.onChanges.emit(option.value());
   }
 
   highlightOption(index: number) {
@@ -140,6 +143,7 @@ export class Select {
         this.lastSelectedValue = null;
         this.selectedContent.set(null);
         this.selectedIndex.set(-1);
+        this.onChanges.emit(null);
         this.highlightOption(-1);
         this.handleOptionsStates();
       }
@@ -187,7 +191,6 @@ export class Select {
   selectFocusedOption() {
     this.selectOption(this.options()[this.highlightedIndex()], this.highlightedIndex());
     this.handleOptionsStates();
-    this.onChanges.emit();
     this.isOpen.set(false);
   }
 
