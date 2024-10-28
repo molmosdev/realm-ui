@@ -59,7 +59,7 @@ export class Search {
   optionsMaxHeight = input<number>(200);
 
   /** Output event for changes */
-  onChanges = output<void>();
+  onChanges = output<string | null>();
 
   /* Signal for the positioning of the options */
   positioning = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
@@ -69,6 +69,9 @@ export class Search {
 
   /** Input for set the dobounce delay */
   debounceDelay = input<number>(400);
+
+  /** Signal for the no results message */
+  noResultsMessage = input<string>('No results found');
 
   constructor(
     private elementRef: ElementRef,
@@ -110,7 +113,6 @@ export class Search {
         this.selectOption(optionEmitted, index);
         this.highlightOption(index);
         this.handleOptionsStates();
-        this.onChanges.emit();
         this.isOpen.set(false);
       });
     });
@@ -122,6 +124,7 @@ export class Search {
     this.lastSelectedValue = option.value();
     this.selectedContent.set(option.el.nativeElement.innerText.trim());
     this.selectedIndex.set(index);
+    this.onChanges.emit(option.value());
   }
 
   highlightOption(index: number) {
@@ -137,10 +140,20 @@ export class Search {
 
   handleExternalSelectedValue(): void {
     if (this.lastSelectedValue !== this.selectedValue()) {
-      const selectedOptionIndex = this.options().findIndex(option => option.value() === this.selectedValue());
-      if (selectedOptionIndex !== -1) {
-        this.selectOption(this.options()[selectedOptionIndex], selectedOptionIndex);
-        this.highlightOption(selectedOptionIndex);
+      if (this.selectedValue()) {
+        const selectedOptionIndex = this.options().findIndex(option => option.value() === this.selectedValue());
+        if (selectedOptionIndex !== -1) {
+          this.selectOption(this.options()[selectedOptionIndex], selectedOptionIndex);
+          this.highlightOption(selectedOptionIndex);
+          this.handleOptionsStates();
+        }
+      } else {
+        this.selectedValue.set(null);
+        this.lastSelectedValue = null;
+        this.selectedContent.set(null);
+        this.selectedIndex.set(-1);
+        this.onChanges.emit(null);
+        this.highlightOption(-1);
         this.handleOptionsStates();
       }
     }
@@ -187,7 +200,6 @@ export class Search {
   selectFocusedOption() {
     this.selectOption(this.options()[this.highlightedIndex()], this.highlightedIndex());
     this.handleOptionsStates();
-    this.onChanges.emit();
     this.isOpen.set(false);
   }
 
