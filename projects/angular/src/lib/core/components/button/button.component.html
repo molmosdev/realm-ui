@@ -1,4 +1,6 @@
 <button [ngClass]="type()" tabindex="0" (click)="onClick.emit()">
-  <r-spinner [active]="loading()" [size]="18" color="var(--primary-foreground)" />
+  @if (loading()) {
+    <r-spinner [active]="loading()" [size]="18" color="var(--primary-foreground)" />
+  }
   <ng-content />
 </button>

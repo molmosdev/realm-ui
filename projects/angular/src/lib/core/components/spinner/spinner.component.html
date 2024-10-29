@@ -1,5 +1,5 @@
 @if (active()) {
-  <section [ngStyle]="{ background: backgroundColor() || 'transparent', 'width.px': size() }" class="background">
+  <section [ngStyle]="{ background: backgroundColor() }" class="background">
     <svg
       [attr.height]="size()"
       [attr.width]="size()"
