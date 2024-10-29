@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { ISpinner } from './models/spinner.model';
 import { NgOptimizedImage, NgStyle } from '@angular/common';
 
 @Component({
@@ -7,12 +6,17 @@ import { NgOptimizedImage, NgStyle } from '@angular/common';
   standalone: true,
   imports: [NgOptimizedImage, NgStyle],
   templateUrl: './spinner.component.html',
-  styleUrl: './spinner.component.scss',
 })
 export class Spinner {
-  /* Inputs*/
-  data = input.required<ISpinner>();
+  /** Signal of the spinner active state */
+  active = input<boolean>(true);
 
-  /* Variables */
-  spinnerSrc = '../../../assets/img/spinner.svg';
+  /** Signal of the spinner color */
+  color = input<string>('var(--foreground)');
+
+  /** Signal of the spinner background color */
+  backgroundColor = input<string>('var(--background)');
+
+  /** Signal of the spinner size */
+  size = input<number>(20);
 }
