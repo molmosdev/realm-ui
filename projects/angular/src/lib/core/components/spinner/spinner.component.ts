@@ -15,7 +15,7 @@ export class Spinner {
   color = input<string>('var(--foreground)');
 
   /** Signal of the spinner background color */
-  backgroundColor = input<string>('var(--background)');
+  backgroundColor = input<string>('transparent');
 
   /** Signal of the spinner size */
   size = input<number>(20);
