@@ -1,6 +1,4 @@
 <button [ngClass]="type()" tabindex="0" (click)="onClick.emit()">
-  @if (spinnerData.active) {
-    <r-spinner [data]="spinnerData" @fadeInOutTrigger />
-  }
+  <r-spinner [active]="loading()" [size]="18" color="var(--primary-foreground)" />
   <ng-content />
 </button>

@@ -2,7 +2,6 @@ import { Component, ElementRef, HostListener, input, output, viewChild } from '@
 import { ButtonTypeEnum } from './enums/button-type.enum';
 import { NgClass, NgStyle } from '@angular/common';
 import { Spinner } from '../spinner/spinner.component';
-import { ISpinner } from '../spinner/models/spinner.model';
 import { fadeInOutTrigger } from '../../../shared/animations/animations';
 
 @Component({
@@ -17,16 +16,4 @@ export class Button {
   loading = input<boolean>(false);
   onClick = output<void>();
 
-  /**
-   * Get the spinner data
-   *
-   * @returns {ISpinner} - The spinner data
-   */
-  get spinnerData(): ISpinner {
-    return {
-      active: this.loading(),
-      size: 18,
-      color: 'var(--primary-foreground)',
-    };
-  }
 }

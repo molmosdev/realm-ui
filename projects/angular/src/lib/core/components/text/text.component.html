@@ -20,7 +20,7 @@
 @if ((clearable() && displayValue()) || searching()) {
   <div class="right-button" (click)="clear()">
     @if (searching()) {
-      <r-spinner [data]="{ active: true, size: 15, color: 'var(--foreground)' }" />
+      <r-spinner [active]="true" [size]="15" color="var(--foreground)" />
     } @else if (clearable() && displayValue()) {
       <svg
         xmlns="http://www.w3.org/2000/svg"
