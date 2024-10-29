@@ -17,16 +17,16 @@
     {{ label() }}
   </label>
 }
-@if (valueType() !== ValueType.Integer || suffix()) {
+@if (valueType() !== 'integer' || suffix()) {
   <div class="suffix-or-type" [ngClass]="{ error: error() }">
     @if (suffix()) {
       {{ suffix() }}
     } @else {
       @switch (valueType()) {
-        @case (ValueType.Currency) {
+        @case ('currency') {
           €
         }
-        @case (ValueType.Percentage) {
+        @case ('percentage') {
           %
         }
       }

@@ -11,7 +11,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { Option } from '../../../shared/components/option/option.component';
-import { OptionsPositioningEnum } from '../../../shared/enums/options-positioning.enum';
 import { NgClass, NgStyle } from '@angular/common';
 import { Text } from '../text/text.component';
 import { UtilsService } from '../../../shared/services/utils.service';
@@ -62,7 +61,7 @@ export class Search {
   onChanges = output<string | null>();
 
   /* Signal for the positioning of the options */
-  positioning = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
+  positioning = input<'up' | 'down'>('down');
 
   /** Output event for text changes */
   onTextChanges = output<string | null>();

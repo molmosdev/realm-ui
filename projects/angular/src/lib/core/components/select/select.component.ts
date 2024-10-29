@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common';
 import { Option } from '../../../shared/components/option/option.component';
-import { OptionsPositioningEnum } from '../../../shared/enums/options-positioning.enum';
 import { fadeInOutTrigger } from '../../../shared/animations/animations';
 
 @Component({
@@ -63,7 +62,7 @@ export class Select {
   onChanges = output<string | null>();
 
   /* Signal for the positioning of the options */
-  positioning = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
+  positioning = input<'up' | 'down'>('down');
 
   /** Signal for the no results message */
   noResultsMessage = input<string>('No results found');

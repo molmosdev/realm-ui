@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { BottomOptionsTypeEnum } from './enums/bottom-options-type.enum';
 
 @Component({
   selector: 'r-bottom-options',
@@ -10,6 +9,5 @@ import { BottomOptionsTypeEnum } from './enums/bottom-options-type.enum';
   styleUrl: './bottom-options.component.scss',
 })
 export class BottomOptions {
-  /* Signals */
-  type = input.required<BottomOptionsTypeEnum>();
+  type = input.required<'left' | 'right' | 'spread'>();
 }

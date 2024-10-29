@@ -2,7 +2,6 @@ import { Component, effect, input, LOCALE_ID, model, output } from '@angular/cor
 import { NgClass, registerLocaleData } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { ValueType } from './enums/value-type.enum';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,9 +16,8 @@ export class Number {
   displayValue: string | null = null;
   label = input<string | undefined>(undefined);
   error = input<boolean>(false);
-  valueType = input<ValueType>(ValueType.Integer);
+  valueType = input<'integer' | 'decimal' | 'currency' | 'percentage'>('integer');
   onChange = output<number | null>();
-  ValueType = ValueType;
   suffix = input<string | undefined>(undefined);
   disabled = model<boolean>(false);
   debounceTimer: any;
@@ -40,7 +38,7 @@ export class Number {
     let newValue = (event.target as HTMLInputElement).value;
 
     // If valueType is Integer, filter out non-numeric characters
-    if (this.valueType() === ValueType.Integer) {
+    if (this.valueType() === 'integer') {
       newValue = newValue.replace(/[^0-9]/g, '');
       (event.target as HTMLInputElement).value = newValue; // Update the input field with the filtered value
     } else {
@@ -69,15 +67,11 @@ export class Number {
       return null;
     }
 
-    if (
-      this.valueType() === ValueType.Currency ||
-      this.valueType() === ValueType.Percentage ||
-      this.valueType() === ValueType.Decimal
-    ) {
+    if (this.valueType() === 'currency' || this.valueType() === 'percentage' || this.valueType() === 'decimal') {
       return this.currencyPipe.transform(value, 'EUR', '', '1.2-2', 'es-ES') || '0';
     }
 
-    if (this.valueType() === ValueType.Integer) {
+    if (this.valueType() === 'integer') {
       return Math.round(value).toString();
     }
 
@@ -95,11 +89,7 @@ export class Number {
       return null;
     }
 
-    if (
-      this.valueType() === ValueType.Currency ||
-      this.valueType() === ValueType.Percentage ||
-      this.valueType() === ValueType.Decimal
-    ) {
+    if (this.valueType() === 'currency' || this.valueType() === 'percentage' || this.valueType() === 'decimal') {
       // Remove all dots
       value = value.replace(/\./g, '');
 
@@ -126,7 +116,7 @@ export class Number {
     let numericValue = parseFloat(value);
 
     if (!isNaN(numericValue)) {
-      if (this.valueType() === ValueType.Integer) {
+      if (this.valueType() === 'integer') {
         // Round to nearest integer, including values like 0.9 to 1
         numericValue = Math.round(numericValue);
       }

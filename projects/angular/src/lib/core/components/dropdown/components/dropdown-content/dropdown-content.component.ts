@@ -1,5 +1,4 @@
 import { Component, contentChild, ElementRef, HostListener, input, output, signal, viewChild } from '@angular/core';
-import { DropdownPositioningEnum } from '../../enums/dropdown-positioning.enum';
 import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { fadeInOutTrigger } from '../../../../../shared/animations/animations';
 import { LazyContentDirective } from '../../../../../shared/directives/lazy-content.directive';
@@ -13,18 +12,13 @@ import { LazyContentDirective } from '../../../../../shared/directives/lazy-cont
   animations: [fadeInOutTrigger],
 })
 export class DropdownContent {
-  /* Signals */
-  positioning = input<DropdownPositioningEnum>(DropdownPositioningEnum.BottomLeft);
+  positioning = input<'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'>('bottom-left');
   width = input<number>(210);
   isDropdownContentVisible = signal<boolean>(false);
   lazyContent = contentChild(LazyContentDirective);
   dropdown = viewChild<ElementRef>('dropdown');
   forcePopover = input<boolean>(false);
-
-  /* Emitters */
   closeEmitter = output<void>();
-
-  /* Variables */
   triggerRect: DOMRect | undefined = undefined;
 
   /**
@@ -69,19 +63,19 @@ export class DropdownContent {
         let left: number;
 
         switch (this.positioning()) {
-          case DropdownPositioningEnum.TopLeft:
+          case 'top-left':
             top = topAlign;
             left = leftAlign;
             break;
-          case DropdownPositioningEnum.TopRight:
+          case 'top-right':
             top = topAlign;
             left = rightAlign;
             break;
-          case DropdownPositioningEnum.BottomLeft:
+          case 'bottom-left':
             top = bottomAlign;
             left = leftAlign;
             break;
-          case DropdownPositioningEnum.BottomRight:
+          case 'bottom-right':
             top = bottomAlign;
             left = rightAlign;
             break;
