@@ -8,7 +8,6 @@ export * from './lib/core/components/button/enums/button-type.enum';
 
 /* Spinner */
 export * from './lib/core/components/spinner/spinner.component';
-export * from './lib/core/components/spinner/models/spinner.model';
 
 /* Dialog */
 export * from './lib/core/components/dialog/dialog.component';
