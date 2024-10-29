@@ -1,0 +1,19 @@
+<input
+  type="text"
+  autocomplete="current-user"
+  #user
+  (input)="onChange.emit(user.value)"
+  [ngClass]="{
+    'has-label': label(),
+    'has-value': user.value,
+    error: error(),
+  }" />
+@if (label()) {
+  <label
+    [ngClass]="{
+      'has-value': user.value,
+      error: error(),
+    }">
+    {{ label() }}
+  </label>
+}

@@ -70,3 +70,9 @@ export * from './lib/shared/enums/options-positioning.enum';
 /* Tabs */
 export * from './lib/core/components/tabs/tabs.component';
 export * from './lib/core/components/tabs/components/tab/tab.component';
+
+/* Password */
+export * from './lib/core/components/password/password.component';
+
+/* User */
+export * from './lib/core/components/user/user.component';
