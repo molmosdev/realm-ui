@@ -3,6 +3,7 @@
   [id]="id()"
   autocomplete="current-user"
   #user
+  [placeholder]="placeholder()"
   (input)="onChange.emit(user.value)"
   [ngClass]="{
     'has-label': label(),

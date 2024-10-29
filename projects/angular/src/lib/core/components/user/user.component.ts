@@ -11,6 +11,9 @@ export class User {
   /** Signal of the user input id */
   id = input<string>('user');
 
+  /** Signal of the password input placeholder */
+  placeholder = input<string>('Password');
+
   /** Signal of the password label */
   label = input<string | undefined>(undefined);
 
