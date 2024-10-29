@@ -15,5 +15,4 @@ export class Button {
   type = input<ButtonTypeEnum>(ButtonTypeEnum.Primary);
   loading = input<boolean>(false);
   onClick = output<void>();
-
 }
