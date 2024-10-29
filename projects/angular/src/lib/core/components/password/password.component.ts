@@ -8,6 +8,9 @@ import { Component, effect, ElementRef, input, output, viewChild } from '@angula
   templateUrl: './password.component.html',
 })
 export class Password {
+  /** Signal of the password input id */
+  id = input<string>('password');
+
   /** Signal of the password label */
   label = input<string | undefined>(undefined);
 

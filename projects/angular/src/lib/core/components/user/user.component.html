@@ -1,5 +1,6 @@
 <input
   type="text"
+  [id]="id()"
   autocomplete="current-user"
   #user
   (input)="onChange.emit(user.value)"
@@ -10,6 +11,7 @@
   }" />
 @if (label()) {
   <label
+    [for]="id()"
     [ngClass]="{
       'has-value': user.value,
       error: error(),

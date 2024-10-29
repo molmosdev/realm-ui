@@ -8,6 +8,9 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './user.component.html',
 })
 export class User {
+  /** Signal of the user input id */
+  id = input<string>('user');
+
   /** Signal of the password label */
   label = input<string | undefined>(undefined);
 
