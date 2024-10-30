@@ -6,10 +6,8 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
   standalone: true,
   imports: [NgClass, NgTemplateOutlet],
   templateUrl: './dropdown-item.component.html',
-  styleUrl: './dropdown-item.component.scss',
 })
 export class DropdownItem {
-  /* Signals */
   disabled = input<boolean>(false);
   selected = input<boolean>(false);
 }

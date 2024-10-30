@@ -8,7 +8,6 @@ import { LazyContentDirective } from '../../../../../shared/directives/lazy-cont
   standalone: true,
   imports: [NgTemplateOutlet, NgStyle],
   templateUrl: './dropdown-content.component.html',
-  styleUrl: './dropdown-content.component.scss',
   animations: [fadeInOutTrigger],
 })
 export class DropdownContent {

@@ -5,7 +5,6 @@ import { Component, ElementRef, input, output } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './dropdown-trigger.component.html',
-  styleUrl: './dropdown-trigger.component.scss',
 })
 export class DropdownTrigger {
   disabled = input<boolean>(false);

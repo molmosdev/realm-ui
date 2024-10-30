@@ -8,11 +8,9 @@ import { DropdownContent } from './components/dropdown-content/dropdown-content.
   standalone: true,
   imports: [NgStyle, NgTemplateOutlet],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.scss',
   animations: [],
 })
 export class Dropdown {
-  /* Signals */
   toggle = signal<boolean>(false);
   dropdownTrigger = contentChild<DropdownTrigger>(DropdownTrigger);
   dropdownContent = contentChild<DropdownContent>(DropdownContent);

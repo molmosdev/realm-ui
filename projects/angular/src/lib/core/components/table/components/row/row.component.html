@@ -1,1 +1,3 @@
-<ng-content />
+<div class="row-container" [ngClass]="{ clickable: clickable(), header: header() }">
+  <ng-content />
+</div>
