@@ -22,11 +22,6 @@ export * from './lib/core/components/dropdown/components/dropdown-content/compon
 export * from './lib/core/components/dropdown/components/dropdown-content/components/dropdown-item/dropdown-item.component';
 export * from './lib/core/components/dropdown/components/dropdown-trigger/dropdown-trigger.component';
 
-/* Sidebar */
-export * from './lib/core/components/sidebar/sidebar.component';
-export * from './lib/core/components/sidebar/components/sidebar-item/sidebar-item.component';
-export * from './lib/core/components/sidebar/components/sidebar-group/sidebar-group.component';
-
 /* Directives */
 export * from './lib/shared/directives/lazy-content.directive';
 
