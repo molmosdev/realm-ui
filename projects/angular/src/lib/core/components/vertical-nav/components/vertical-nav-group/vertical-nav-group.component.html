@@ -1,0 +1,46 @@
+<div class="group-wrapper" (click)="toggleExpandedState()">
+  <div class="left">
+    <div class="group-icon">
+      <ng-content select="[r-vertical-nav-group-icon]" />
+    </div>
+    <div class="group-text">
+      <ng-content select="[r-vertical-nav-group-title]" />
+    </div>
+  </div>
+  <div class="group-arrows">
+    @if (expanded()) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.094rem"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-up">
+        <path d="m18 15-6-6-6 6" />
+      </svg>
+    } @else {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.094rem"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-down">
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    }
+  </div>
+</div>
+@if (expanded()) {
+  <div class="nested-wrapper">
+    <ng-content />
+  </div>
+}

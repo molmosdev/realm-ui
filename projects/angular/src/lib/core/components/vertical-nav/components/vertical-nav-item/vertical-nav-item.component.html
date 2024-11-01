@@ -1,0 +1,8 @@
+<div class="item-wrapper" [ngClass]="{ active: active() }">
+  <div class="item-icon">
+    <ng-content select="[r-vertical-nav-item-icon]" />
+  </div>
+  <div class="item-text">
+    <ng-content />
+  </div>
+</div>
