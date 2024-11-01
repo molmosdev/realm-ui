@@ -68,3 +68,8 @@ export * from './lib/core/components/password/password.component';
 
 /* User */
 export * from './lib/core/components/user/user.component';
+
+/* Vertical Nav */
+export * from './lib/core/components/vertical-nav/vertical-nav.component';
+export * from './lib/core/components/vertical-nav/components/vertical-nav-group/vertical-nav-group.component';
+export * from './lib/core/components/vertical-nav/components/vertical-nav-item/vertical-nav-item.component';
