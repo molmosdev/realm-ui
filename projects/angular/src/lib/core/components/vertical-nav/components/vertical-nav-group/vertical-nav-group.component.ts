@@ -26,9 +26,7 @@ export class VerticalNavGroup {
 
   /**
    * Set the state of the sidebar recursively
-   *
-   * @param {SidebarGroup} group
-   * @param {boolean} isOpen
+   * @param {VerticalNavGroup} group - The group to set the state for
    */
   setRecursiveGroupsState(group: VerticalNavGroup): void {
     group.expanded.set(false);

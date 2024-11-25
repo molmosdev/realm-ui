@@ -8,9 +8,9 @@ import { NgClass } from '@angular/common';
   templateUrl: './switch.component.html',
 })
 export class Switch {
-  value: ModelSignal<boolean> = model(false);
-  label: InputSignal<string> = input<string>('');
-  onChange: OutputEmitterRef<boolean> = output<boolean>();
+  value = model(false);
+  label = input<string>('');
+  onChange = output<boolean>();
 
   /**
    * Toggle the switch value

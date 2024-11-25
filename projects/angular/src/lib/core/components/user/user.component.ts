@@ -8,18 +8,9 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './user.component.html',
 })
 export class User {
-  /** Signal of the user input id */
   id = input<string>('user');
-
-  /** Signal of the password input placeholder */
   placeholder = input<string>('Password');
-
-  /** Signal of the password label */
   label = input<string | undefined>(undefined);
-
-  /** Signal of the password error */
   error = input<boolean>(false);
-
-  /** Output signal of the password value */
   onChange = output<string | null>();
 }

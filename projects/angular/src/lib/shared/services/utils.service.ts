@@ -9,9 +9,8 @@ export class UtilsService {
 
   /**
    * Debounce with optional delay
-   *
-   * @param {any} func
-   * @param {any} delay
+   * @param {any} func - The function to debounce
+   * @param {any} delay - The delay in milliseconds
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   debounce(func: any, delay: any): void {

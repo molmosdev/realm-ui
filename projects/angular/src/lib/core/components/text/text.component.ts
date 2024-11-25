@@ -22,7 +22,6 @@ export class Text {
 
   /**
    * Get the input trigger state
-   *
    * @returns {string} - The input trigger state
    */
   get inputTriggerState(): string {
@@ -31,8 +30,7 @@ export class Text {
 
   /**
    * Update the value
-   *
-   * @param {KeyboardEvent} event
+   * @param {KeyboardEvent} event - The keyboard event
    */
   updateValue(event: KeyboardEvent): void {
     const newValue = (event.target as HTMLInputElement).value;
@@ -42,6 +40,9 @@ export class Text {
     }
   }
 
+  /**
+   * Clear the value
+   */
   clear() {
     this.value.set(null);
     this.onChange.emit(null);

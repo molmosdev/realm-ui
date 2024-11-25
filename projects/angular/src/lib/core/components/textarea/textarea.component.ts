@@ -1,4 +1,4 @@
-import { Component, computed, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
+import { Component, computed, input, model, output } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -9,16 +9,15 @@ import { NgClass } from '@angular/common';
   animations: [],
 })
 export class Textarea {
-  value: ModelSignal<string | null> = model<string | null>(null);
+  value = model<string | null>(null);
   displayValue = computed(() => this.value() || '');
-  label: InputSignal<string | undefined> = input<string | undefined>(undefined);
-  error: InputSignal<boolean> = input<boolean>(false);
-  hasValueForced: InputSignal<boolean> = input<boolean>(false);
-  onChange: OutputEmitterRef<string | null> = output<string | null>();
+  label = input<string | undefined>(undefined);
+  error = input<boolean>(false);
+  hasValueForced = input<boolean>(false);
+  onChange = output<string | null>();
 
   /**
    * Get the input trigger state
-   *
    * @returns {string} - The input trigger state
    */
   get inputTriggerState(): string {
@@ -27,8 +26,7 @@ export class Textarea {
 
   /**
    * Update the value
-   *
-   * @param {KeyboardEvent} event
+   * @param {KeyboardEvent} event - The keyboard event
    */
   updateValue(event: KeyboardEvent): void {
     const newValue = (event.target as HTMLInputElement).value;

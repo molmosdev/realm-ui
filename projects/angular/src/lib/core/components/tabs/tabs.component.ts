@@ -8,23 +8,12 @@ import { Tab } from './components/tab/tab.component';
   templateUrl: './tabs.component.html',
 })
 export class Tabs implements OnInit {
-  /** QueryList of Tab instances */
   tabs = contentChildren(Tab);
-
-  /** Signal for the selected option index */
   selectedIndex = signal<number>(-1);
-
-  /** Signal for the selected option value */
   selectedValue = model<string | null>(null);
-
-  /** Last selected option value */
-  lastSelectedValue: string | null = null;
-
-  /** Signal to manage the highlighted option index */
   highlightedIndex = signal<number>(-1);
-
-  /** Output event for changes */
   onChanges = output<string>();
+  lastSelectedValue: string | null = null;
 
   constructor() {
     effect(
@@ -39,6 +28,9 @@ export class Tabs implements OnInit {
     );
   }
 
+  /**
+   * Handle the selection of a tab.
+   */
   handleTabSelection(): void {
     this.tabs().forEach((tab, index) => {
       tab.select.subscribe(tabEmitted => {
@@ -50,16 +42,28 @@ export class Tabs implements OnInit {
     });
   }
 
+  /**
+   * Select a tab.
+   * @param {Tab} tab - The tab to select.
+   * @param {number} index - The index of the tab.
+   */
   selectTab(tab: Tab, index: number): void {
     this.selectedValue.set(tab.value());
     this.lastSelectedValue = tab.value();
     this.selectedIndex.set(index);
   }
 
+  /**
+   * Highlight a tab.
+   * @param {number} index - The index of the tab to highlight.
+   */
   highlightTab(index: number) {
     this.highlightedIndex.set(index);
   }
 
+  /**
+   * Handle the states of the tabs.
+   */
   handleTabStates(): void {
     this.tabs().forEach((tab, index) => {
       tab.selected.set(index === this.selectedIndex());
@@ -67,6 +71,9 @@ export class Tabs implements OnInit {
     });
   }
 
+  /**
+   * Handle the external selected value.
+   */
   handleExternalSelectedValue(): void {
     if (this.lastSelectedValue !== this.selectedValue()) {
       const selectedOptionIndex = this.tabs().findIndex(tab => tab.value() === this.selectedValue());
@@ -78,16 +85,26 @@ export class Tabs implements OnInit {
     }
   }
 
+  /**
+   * Scroll to the selected tab.
+   */
   handleScrollToSelectedTab() {
     if (this.selectedIndex() !== -1) {
       this.scrollToTab(this.selectedIndex(), 'smooth');
     }
   }
 
+  /**
+   * Angular lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit() {
     this.tabs()[0].selected.set(true);
   }
 
+  /**
+   * Handle keyboard events for navigation and selection.
+   * @param {KeyboardEvent} event - The keyboard event.
+   */
   @HostListener('keydown', ['$event'])
   handleKeyboard(event: KeyboardEvent) {
     switch (event.key) {
@@ -106,6 +123,10 @@ export class Tabs implements OnInit {
     }
   }
 
+  /**
+   * Focus on the next or previous tab.
+   * @param {'next' | 'previous'} direction - The direction to move the focus.
+   */
   focusOption(direction: 'next' | 'previous') {
     let index = this.highlightedIndex();
     const increment = direction === 'next' ? 1 : -1;
@@ -122,11 +143,19 @@ export class Tabs implements OnInit {
     }
   }
 
+  /**
+   * Select the currently focused tab.
+   */
   selectFocusedTab() {
     this.selectTab(this.tabs()[this.highlightedIndex()], this.highlightedIndex());
     this.handleTabStates();
   }
 
+  /**
+   * Scroll to a specific tab.
+   * @param {number} index - The index of the tab to scroll to.
+   * @param {string} behavior - The scroll behavior ('instant' or 'smooth').
+   */
   scrollToTab(index: number, behavior: string): void {
     const tabsElements = this.tabs();
     if (tabsElements[index].el.nativeElement) {

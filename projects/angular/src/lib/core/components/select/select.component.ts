@@ -22,49 +22,20 @@ import { fadeInOutTrigger } from '../../../shared/animations/animations';
   animations: [fadeInOutTrigger],
 })
 export class Select {
-  /** Signal for the label of the select */
   label = input<string | undefined>(undefined);
-
-  /** Signal for show the clear button */
   clearable = input<boolean>(false);
-
-  /** Signal for the error state of the select */
   error = input<boolean>(false);
-
-  /** Signal to control if the dropdown is open or closed */
   isOpen = signal(false);
-
-  /** Signal for the selected option value */
   selectedValue = model<string | null>(null);
-
-  /** Signal for the selected option index */
   selectedIndex = signal<number>(-1);
-
-  /** Signal for the selected option content */
   selectedContent = signal<string | null>(null);
-
-  /** Signal to manage the highlighted option index */
   highlightedIndex = signal<number>(-1);
-
-  /** QueryList of SelectOption2Component instances */
   options = contentChildren(Option);
-
-  /** Reference to the options wrapper element */
   optionsWrapper = viewChild<ElementRef>('optionsWrapper');
-
-  /** Last selected option value */
   lastSelectedValue: string | null = null;
-
-  /** Maximum height of the options wrapper */
   optionsMaxHeight = input<number>(200);
-
-  /** Output event for changes */
   onChanges = output<string | null>();
-
-  /* Signal for the positioning of the options */
   positioning = input<'up' | 'down'>('down');
-
-  /** Signal for the no results message */
   noResultsMessage = input<string>('No results found');
 
   constructor(private elementRef: ElementRef) {
@@ -82,12 +53,20 @@ export class Select {
     );
   }
 
+  /**
+   * Scroll to the selected option when the dropdown is opened.
+   */
   handleScrollToSelectedOptionOnOpen() {
     if (this.selectedIndex() !== -1) {
       this.scrollToOption(this.selectedIndex(), 'instant');
     }
   }
 
+  /**
+   * Scroll to a specific option in the dropdown.
+   * @param {number} index - The index of the option to scroll to.
+   * @param {string} behavior - The scroll behavior ('instant' or 'smooth').
+   */
   scrollToOption(index: number, behavior: string): void {
     const optionElements = this.options();
     if (optionElements[index]) {
@@ -98,6 +77,9 @@ export class Select {
     }
   }
 
+  /**
+   * Handle the selection of an option.
+   */
   handleOptionSelection(): void {
     this.options().forEach((option, index) => {
       option.select.subscribe(optionEmitted => {
@@ -109,6 +91,11 @@ export class Select {
     });
   }
 
+  /**
+   * Select an option.
+   * @param {Option} option - The option to select.
+   * @param {number} index - The index of the option.
+   */
   selectOption(option: Option, index: number): void {
     this.selectedValue.set(option.value());
     this.lastSelectedValue = option.value();
@@ -117,10 +104,17 @@ export class Select {
     this.onChanges.emit(option.value());
   }
 
+  /**
+   * Highlight an option.
+   * @param {number} index - The index of the option to highlight.
+   */
   highlightOption(index: number) {
     this.highlightedIndex.set(index);
   }
 
+  /**
+   * Handle the states of the options.
+   */
   handleOptionsStates(): void {
     this.options().forEach((option, index) => {
       option.selected.set(index === this.selectedIndex());
@@ -128,6 +122,9 @@ export class Select {
     });
   }
 
+  /**
+   * Handle the external selected value.
+   */
   handleExternalSelectedValue(): void {
     if (this.lastSelectedValue !== this.selectedValue()) {
       if (this.selectedValue()) {
@@ -149,6 +146,10 @@ export class Select {
     }
   }
 
+  /**
+   * Handle keyboard events for navigation and selection.
+   * @param {KeyboardEvent} event - The keyboard event.
+   */
   @HostListener('keydown', ['$event'])
   handleKeyboard(event: KeyboardEvent) {
     switch (event.key) {
@@ -171,6 +172,10 @@ export class Select {
     }
   }
 
+  /**
+   * Focus on the next or previous option.
+   * @param {'next' | 'previous'} direction - The direction to move the focus.
+   */
   focusOption(direction: 'next' | 'previous') {
     let index = this.highlightedIndex();
     const increment = direction === 'next' ? 1 : -1;
@@ -187,22 +192,35 @@ export class Select {
     }
   }
 
+  /**
+   * Select the currently focused option.
+   */
   selectFocusedOption() {
     this.selectOption(this.options()[this.highlightedIndex()], this.highlightedIndex());
     this.handleOptionsStates();
     this.isOpen.set(false);
   }
 
+  /**
+   * Handle focus event to open the dropdown.
+   */
   @HostListener('focus')
   handleFocus(): void {
     this.isOpen.set(true);
   }
 
+  /**
+   * Handle blur event to close the dropdown.
+   */
   @HostListener('blur')
   handleBlur(): void {
     this.isOpen.set(false);
   }
 
+  /**
+   * Handle click outside the component to close the dropdown.
+   * @param {MouseEvent} event - The mouse event.
+   */
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: MouseEvent): void {
     if (!this.elementRef.nativeElement.contains(event.target)) {
@@ -210,6 +228,10 @@ export class Select {
     }
   }
 
+  /**
+   * Clear the current selection.
+   * @param {any} $event - The event object.
+   */
   clearSelection($event: any): void {
     this.selectedIndex.set(-1);
     this.selectedValue.set(null);

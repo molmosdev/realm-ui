@@ -30,9 +30,8 @@ export class Number {
   }
 
   /**
-   * Update the value
-   *
-   * @param {string | null} newValue
+   * Update the value based on the input event
+   * @param {KeyboardEvent} event - The keyboard event triggered by user input
    */
   updateValue(event: KeyboardEvent): void {
     let newValue = (event.target as HTMLInputElement).value;
@@ -58,9 +57,8 @@ export class Number {
 
   /**
    * Format the value based on the valueType input
-   *
-   * @param {number | null} value
-   * @returns {string | null}
+   * @param {number | null} value - The numeric value to format
+   * @returns {string | null} - The formatted value as a string or null if the value is null
    */
   private formatValue(value: number | null): string | null {
     if (value === null) {
@@ -80,9 +78,8 @@ export class Number {
 
   /**
    * Parse the input value to a number
-   *
-   * @param {string | null} value
-   * @returns {number | null}
+   * @param {string | null} value - The input value as a string
+   * @returns {number | null} - The parsed numeric value or null if the input is invalid
    */
   private parseValue(value: string | null): number | null {
     if (!value) {

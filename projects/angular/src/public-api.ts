@@ -12,9 +12,6 @@ export * from './lib/core/components/spinner/spinner.component';
 export * from './lib/core/components/dialog/dialog.component';
 export * from './lib/core/components/dialog/components/dialog-title/dialog-title.component';
 
-/* Bottom Options */
-export * from './lib/shared/components/bottom-options/bottom-options.component';
-
 /* Dropdown */
 export * from './lib/core/components/dropdown/dropdown.component';
 export * from './lib/core/components/dropdown/components/dropdown-content/dropdown-content.component';

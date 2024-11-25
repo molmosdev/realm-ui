@@ -1,12 +1,10 @@
 import { Component, contentChild, effect, HostListener, signal } from '@angular/core';
-import { NgStyle, NgTemplateOutlet } from '@angular/common';
 import { DropdownTrigger } from './components/dropdown-trigger/dropdown-trigger.component';
 import { DropdownContent } from './components/dropdown-content/dropdown-content.component';
 
 @Component({
   selector: 'r-dropdown',
   standalone: true,
-  imports: [NgStyle, NgTemplateOutlet],
   templateUrl: './dropdown.component.html',
   animations: [],
 })
