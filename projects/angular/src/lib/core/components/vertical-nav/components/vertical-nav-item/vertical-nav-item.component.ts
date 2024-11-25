@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input, signal } from '@angular/core';
-import { fadeInOutTrigger } from '../../../../../shared/animations/animations';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'r-vertical-nav-item',
