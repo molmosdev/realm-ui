@@ -1,4 +1,4 @@
-import { Component, contentChildren, input } from '@angular/core';
+import { Component, contentChildren, effect, input } from '@angular/core';
 import { VerticalNavItem } from './components/vertical-nav-item/vertical-nav-item.component';
 import { VerticalNavGroup } from './components/vertical-nav-group/vertical-nav-group.component';
 import { NgClass } from '@angular/common';
@@ -13,4 +13,11 @@ export class VerticalNav {
   extended = input<boolean>(true);
   items = contentChildren(VerticalNavItem);
   groups = contentChildren(VerticalNavGroup);
+  extendedWidth = input<string>('200px');
+
+  constructor() {
+    effect(() => {
+      document.documentElement.style.setProperty('--vertical-nav-width', this.extendedWidth());
+    });
+  }
 }
